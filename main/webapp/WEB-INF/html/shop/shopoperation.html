@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>店铺注册</title>
+    <!-- 引入 FrozenUI -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css"/>
+
+</head>
+
+<body>
+
+<!--<div class="ui-form ui-border-t" style="text-align:center;font-size: 20px">店铺注册-->
+<!--</div>-->
+
+
+<div class="ui-panel-more ui-border-tb" style="font-size: 20px">
+    <a herf="#" id="dj" style="float: left">&nbsp;&nbsp;< 返回</a>
+    <div style="margin-right: 15%">店铺注册</div>
+</div>
+<div style="height: 20px"></div>
+<div class="ui-form ui-border-t">
+    <form action="">
+        <div class="ui-form-item ui-border-b">
+            <label>
+                店铺名称：
+            </label>
+            <input type="text" id="shop-name" placeholder="请输入店铺名称">
+        </div>
+        <div class="ui-form-item ui-border-b">
+            <label>商铺分类：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div>
+                <select id="shop-category" >
+                </select>
+            </div>
+        </div>
+        <div class="ui-form-item ui-border-b">
+            <label>所属区域：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div >
+                <select id="area">
+                </select>
+            </div>
+        </div>
+        <div class="ui-form-item ui-border-b">
+            <label>
+                详细地址：
+            </label>
+            <input type="text" id="shop-addr" placeholder="请输入详细地址">
+        </div>
+        <div class="ui-form-item ui-border-b">
+            <label>
+                联系电话：
+            </label>
+            <input type="text" id="shop-phone" placeholder="请输入联系方式">
+        </div>
+        <div class="ui-form-item ui-border-b">
+            <label>
+                店铺图片：
+            </label>
+            <input type="file" id="shop-img">
+        </div>
+        <div class="ui-form-item ui-border-b">
+        <label>
+            店铺简介：
+        </label>
+            <input type="text" id="shop-desc" placeholder="店铺简介">
+    </div>
+        <div class="ui-form-item ui-border-b">
+            <label>
+                验证码：
+            </label>&nbsp;&nbsp;&nbsp;
+            <input style="width: 170px" type="text" id="j_captcha" placeholder="请输入验证码">
+            <div><img id="captcha_img" alt="点击更换" title="点击更换" onclick="changeVerifyCode(this)" src=" ../Kaptcha"/>
+            </div>
+            </div>
+        <div class="ui-btn-wrap">
+            <a href="#" class="ui-btn"> 返回</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" class=" ui-btn ui-btn-primary" id="sumbit">确定</a>
+        </div>
+    </form>
+</div>
+<div id="toasttishi" class="ui-dialog">
+    <div class="ui-dialog-cnt">
+        <div class="ui-dialog-bd">
+            <p id="tishi">将终止文件发送，确定返回？</p>
+        </div>
+        <div class="ui-dialog-ft">
+            <button type="button" data-role="button" id="suretishi">确定</button>
+        </div>
+    </div>
+</div>
+</form>
+</div>
+
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/shop/shopoperation.js" charset="UTF-8"></script>
+</body>
+</html>
