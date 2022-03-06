@@ -24,10 +24,6 @@ $(function (){
             }
         });
 
-        $('#suretishi').click(function () {
-            $('#toasttishi').removeClass('show');
-        });
-
         $('#sumbit').click(function () {
             var shop = {};
             shop.shopName = $('#shop-name').val();
@@ -44,11 +40,18 @@ $(function (){
                     return !this.selected;
                 }).data('id')
             };
+            setTimeout(function () {
+                $('#fildtoast').css("opacity","0");
+                $('#fildtoast').css("display","none");
+                $('#toast').css("opacity","0");
+                $('#toast').css("display","none");
+            }, 2000);
             var shopImg = $('#shop-img')[0].files[0];
             if (isEmpty(shopImg)||isEmpty(shop.shopName)||isEmpty(shop.shopAddr)||isEmpty(shop.phone)||isEmpty(shop.shopDesc)){
-                var html='请将信息填写完全！';//声明js变量
-                document.getElementById('tishi').innerText = html;
-                $('#toasttishi').addClass('show');
+                $("#infotoast").text("请检查内容是否为空");
+                $('#fildtoast').css("display","");
+                $('#fildtoast').css("opacity","1");
+                setTimeout();
                 return;
             }
             var formData = new FormData();
@@ -56,9 +59,10 @@ $(function (){
             formData.append('shopStr', JSON.stringify(shop));
             var verifyCodeActual = $('#j_captcha').val();
             if (!verifyCodeActual){
-                var html='请输入验证码!';//声明js变量
-                document.getElementById('tishi').innerText = html;
-                $('#toasttishi').addClass('show');
+                $("#infotoast").text("请检查验证码");
+                $('#fildtoast').css("display","");
+                $('#fildtoast').css("opacity","1");
+                setTimeout();
                 return;
             }
             formData.append('verifyCodeActual' , verifyCodeActual);
@@ -71,13 +75,15 @@ $(function (){
                 cache: false,
                 success: function (data) {
                     if (data.success) {
-                        var html='注册成功!';//声明js变量
-                        document.getElementById('tishi').innerText = html;
-                        $('#toasttishi').addClass('show');
+                        $("#successtoast").text("注册成功");
+                        $('#toast').css("display","");
+                        $('#toast').css("opacity","1");
+                        setTimeout();
                     } else {
-                        var html='注册失败!';//声明js变量
-                        document.getElementById('tishi').innerText = html;
-                        $('#toasttishi').addClass('show');
+                        $("#successtoast").text("注册失败");
+                        $('#fildtoast').css("display","");
+                        $('#fildtoast').css("opacity","1");
+                        setTimeout();
 
                     }
                     $('#captcha_img').click();
