@@ -4,6 +4,13 @@ import com.shangpu.entity.Shop;
 
 public interface ShopDao {
     /**
+     * 通过ShopId查询店铺
+     * @param shopId
+     * @return
+     */
+    Shop queryByShopId(long shopId);
+
+    /**
      * 新增店铺
      * @param shop
      * @return

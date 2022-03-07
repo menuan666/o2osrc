@@ -8,6 +8,7 @@ import com.shangpu.exceptions.ShopOperationException;
 import com.shangpu.service.ShopService;
 import com.shangpu.util.ImageUtil;
 import com.shangpu.util.PathUtil;
+import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,39 @@ import java.util.Date;
 public class ShopServiceImpl implements ShopService {
     @Autowired
     private ShopDao shopDao;
+
+    @Override
+    public Shop getByShopId(long shopId) {
+        return shopDao.queryByShopId(shopId);
+    }
+
+    @Override
+    public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException {
+        if (shop == null || shop.getShopId() == null) {
+            return new ShopExecution(ShopStateEnum.NULL_SHOP);
+        } else {
+            try {
+            //1.判断是否需要处理图片
+            if (shopImgInputStream != null && fileName != null && !"".equals(fileName)) {
+                Shop tempShop = shopDao.queryByShopId(shop.getShopId());
+                if (tempShop.getShopImg() != null) {
+                    ImageUtil.deleteFileOrPath(tempShop.getShopImg());
+                }
+                addShopImg(shop, shopImgInputStream, fileName);
+            }
+            //⒉.更新店铺信息
+            shop.setLastEditTime(new Date());
+            int effectedNum = shopDao.updateShop(shop);
+            if (effectedNum <= 0) {
+                return new ShopExecution(ShopStateEnum.INNER_ERROR);
+            } else {
+                shop = shopDao.queryByShopId(shop.getShopId());
+                return new ShopExecution(ShopStateEnum.SUCCESS, shop);
+            }}catch (Exception e){
+                throw new ShopOperationException("modifyShop error:" + e.getMessage());
+            }
+        }
+    }
 
     @Override
     @Transactional
