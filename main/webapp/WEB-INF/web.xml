@@ -42,7 +42,7 @@
         <!--使用哪些字符生成验证码-->
         <init-param>
             <param-name>kaptcha.textproducer.char.string</param-name>
-            <param-value>qwertyuighkfdsazxcvbnm128345679</param-value>
+            <param-value>128345679</param-value>
         </init-param>
         <!--图片高度-->
         <init-param>
