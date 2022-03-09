@@ -1,6 +1,19 @@
 /**
  *
  */
+function toast1(){
+    $('#fildtoast').css("opacity", "0");
+    $('#fildtoast').css("display", "none");
+    $('#toast').css("opacity", "0");
+    $('#toast').css("display", "none");
+}
+function location1(){
+    $('#fildtoast').css("opacity", "0");
+    $('#fildtoast').css("display", "none");
+    $('#toast').css("opacity", "0");
+    $('#toast').css("display", "none");
+    window.location.href="/shopadmin/shoplist";
+}
 $(function () {
     var shopId = getQueryString('shopId');
     var isEdit = shopId ? true : false;
@@ -10,11 +23,13 @@ $(function () {
     var editShopUrl = '/shopadmin/modyfishop';
     if (!isEdit) {
         getShopInitInfo();
+        $('#return').attr('href','/shopadmin/shoplist');
     } else {
         getShopInfo(shopId);
-
         $("#sumbit").text('修 改');
         $("#toptitle").text('修改店铺');
+        $('#return').attr('href','/shopadmin/shopmanagement?shopId='+shopId);
+        $('#return1').attr('href','/shopadmin/shopmanagement?shopId='+shopId);
     }
 
     function getShopInfo(shopId) {
@@ -61,6 +76,7 @@ $(function () {
             }
         });
     }
+
     $('#sumbit').click(function () {
         var shop = {};
         if (isEdit) {
@@ -80,19 +96,14 @@ $(function () {
                 return !this.selected;
             }).data('id')
         };
-        setTimeout(function () {
-            $('#fildtoast').css("opacity", "0");
-            $('#fildtoast').css("display", "none");
-            $('#toast').css("opacity", "0");
-            $('#toast').css("display", "none");
-        }, 2000);
+
         var shopImg = $('#shop-img')[0].files[0];
         if (!isEdit){
         if (isEmpty(shopImg) || isEmpty(shop.shopName) || isEmpty(shop.shopAddr) || isEmpty(shop.phone) || isEmpty(shop.shopDesc)) {
             $("#infotoast").text("请检查内容是否为空");
             $('#fildtoast').css("display", "");
             $('#fildtoast').css("opacity", "1");
-            setTimeout();
+            setTimeout("toast1()",2000);
             return;
         }}
         var formData = new FormData();
@@ -103,7 +114,7 @@ $(function () {
             $("#infotoast").text("请检查验证码");
             $('#fildtoast').css("display", "");
             $('#fildtoast').css("opacity", "1");
-            setTimeout();
+            setTimeout("toast1()",2000);
             return;
         }
         formData.append('verifyCodeActual', verifyCodeActual);
@@ -122,11 +133,13 @@ $(function () {
                         $("#successtoast").text("修改成功");
                     }else{
                         $("#successtoast").text("注册成功");
+
                     }
+
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
+                    setTimeout("location1()",2000);
 
-                    setTimeout();
                 } else {
 
                     if (isEdit){
@@ -136,13 +149,14 @@ $(function () {
                     }
                     $('#fildtoast').css("display", "");
                     $('#fildtoast').css("opacity", "1");
-                    setTimeout();
+                    setTimeout("toast1()",2000);
 
                 }
                 $('#captcha_img').click();
             }
         });
     });
+
     function isEmpty(v) {
         switch (typeof v) {
             case 'undefined':

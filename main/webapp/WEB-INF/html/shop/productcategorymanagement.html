@@ -6,14 +6,15 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <title>商品类别管理</title>
-    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
     <link rel="stylesheet" href="../resources/WeUI/weui.css">
     <link rel="stylesheet" href="../resources/WeUI/example.css">
 </head>
 
 <body style="background: #fff;">
-<div class="weui-form__text-area" style="margin-top: 20px;margin-bottom: 20px">
-    <h2 id="toptitle" class="weui-form__title page_title">商品类别列表</h2>
+<a href="/shopadmin/shopmanagement" id="return" style="float: left;margin-left: 20px">< 返回</a>
+<div style="margin-top: 20px;margin-bottom: 20px">
+    <p id="toptitle" style="margin-left: 40%;font-weight:bolder">商品类别列表</p>
 </div>
 
 <div class="weui-flex" style="margin-bottom: 10px">
@@ -21,14 +22,22 @@
     <div class="weui-flex__item"><div class="placeholder" style="margin-left: 30%;color:#0080FF">优先级</div></div>
     <div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%;color:#0080FF">操作</div></div>
 </div>
+
 <div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;height: 1px"></div>
 <div id="divprodectlist">
 
 </div>
 <div style="margin-top: 30px">
-    <a href="/shopadmin/shoplist" role="button" class="weui-btn weui-btn_mini weui-btn_warn weui-wa-hotarea" style="width: 30%;margin-left: 15%">新 增</a>
-    <a href="javascript:" id="sumbit" role="button" class="weui-btn weui-btn_mini weui-btn_primary weui-wa-hotarea" style="width: 30%;margin-left: 10%" >提 交</a>
+    <a href="#" id="new" role="button" class="weui-btn weui-btn_mini weui-btn_default weui-wa-hotarea" style="width: 30%;margin-left: 15%">新 增</a>
+    <a href="#" id="sumbit" role="button" class="weui-btn weui-btn_mini weui-btn_primary weui-wa-hotarea" style="width: 30%;margin-left: 10%" >提 交</a>
 </div>
+<div role="alert" id="toast" style="opacity: 0; display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <p id="infotoast" class="weui-toast__content"></p>
+    </div>
+</div>
+<script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../resources/js/shop/shoplist.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../resources/js/shop/productcategorymanage.js" charset="UTF-8"></script>
 </body>

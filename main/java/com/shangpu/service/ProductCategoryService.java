@@ -1,6 +1,9 @@
 package com.shangpu.service;
 
+import com.shangpu.dto.ProductCategoryExecution;
 import com.shangpu.entity.ProductCategory;
+
+import com.shangpu.exceptions.ProductCategoryOperationException;
 
 import java.util.List;
 
@@ -11,5 +14,8 @@ public interface ProductCategoryService {
      * @return
      */
     List<ProductCategory> getProductCategoryList(long shopId);
+
+    ProductCategoryExecution batchAddProductCategory(List<ProductCategory> productCategoryList)
+throws ProductCategoryOperationException;
 
 }
