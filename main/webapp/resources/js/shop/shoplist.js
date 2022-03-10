@@ -28,7 +28,7 @@ $(function() {
                 '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%">'
                 + goShop(item.enableStatus, item.shopId) + '</div></div>\n' +
                 '</div>\n' +
-                '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;height: 1px"></div>';
+                '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div>';
         });
         $('#divshoplist').html(html);
     }

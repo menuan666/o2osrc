@@ -41,7 +41,7 @@ $(function () {
             '    <div class="weui-flex__item"><input class="weui-input priority"  placeholder="优先级" style="margin-left: 40%;"></div>\n' +
             '    <div class="weui-flex__item"><a href="#" class="delete" style="margin-left: 40%;">删除</a></div>\n' +
             '</div>\n' +
-            '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;height: 1px"></div></div>';
+            '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div></div>';
         $('#divprodectlist').append(tempHtml);
 
     });
