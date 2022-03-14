@@ -1,5 +1,6 @@
 package com.shangpu.util;
 
+import com.shangpu.dto.ImageHolder;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
@@ -40,20 +41,19 @@ public class ImageUtil {
     }
     /**
      * 处理缩略图，并返回新生成图片的相对值路径
-     * @param thumbnailInputStream
      * @param targetAddr
      * @return
      */
-    public static String generateThumbnail(InputStream thumbnailInputStream, String fileName, String targetAddr) {
+    public static String generateThumbnail(ImageHolder thumbnail, String targetAddr) {
         String realFileName = getRandomFileName();
-        String extension = getFileExtension(fileName);
+        String extension = getFileExtension(thumbnail.getImageName());
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr + realFileName + extension;
         logger.debug("current relativeAdde is:"+ relativeAddr);
         File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
         logger.debug("current quanAdde is:"+ PathUtil.getImgBasePath() + relativeAddr);
         try {
-            Thumbnails.of(thumbnailInputStream).size(200, 200)
+            Thumbnails.of(thumbnail.getImage()).size(200, 200)
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
                     .outputQuality(0.8f).toFile(dest);
         } catch (IOException e) {
@@ -120,4 +120,30 @@ public class ImageUtil {
         }
     }
 
+    public static String generateNormalImg(ImageHolder thumbnail, String targetAddr) {
+        //获取不重复的随机名
+        String realFileName = getRandomFileName();
+        //获取文件的扩展名如png，jpg等
+        String extension = getFileExtension(thumbnail.getImageName());
+        //如果目标路径不存在，则自动创建
+        makeDirPath(targetAddr);
+        //获取文件存储的相对路径，带文件名
+        String relativeAddr = targetAddr + realFileName + extension;
+        logger.debug("current relativeAdde is:"+ relativeAddr);
+        //获取文件要保存的目标路径
+        File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
+        logger.debug("current quanAdde is:"+ PathUtil.getImgBasePath() + relativeAddr);
+        //调用Thumbnails生成带水印的图片
+        try {
+            Thumbnails.of(thumbnail.getImage()).size(337, 640).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
+                    .outputQuality(0.9f).
+                    toFile(dest);
+        } catch (IOException e) {
+            logger.error(e.toString());
+            e.printStackTrace();
+            throw new RuntimeException("创建缩略图失败：" + e.toString());
+        }
+        //返回图片相对路径
+        return relativeAddr;
+    }
 }

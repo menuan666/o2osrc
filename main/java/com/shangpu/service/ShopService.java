@@ -1,5 +1,6 @@
 package com.shangpu.service;
 
+import com.shangpu.dto.ImageHolder;
 import com.shangpu.dto.ShopExecution;
 import com.shangpu.entity.Shop;
 import com.shangpu.exceptions.ShopOperationException;
@@ -27,20 +28,16 @@ public interface ShopService {
     /**
      * 更新店铺的信息，包括图片的处理
      * @param shop
-     * @param shopImgInputStream
-     * @param fileName
      * @return
      * @throws ShopOperationException
      */
-    ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream,String fileName) throws ShopOperationException;
+    ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException;
 
     /**
      * 注册店铺信息，包括图片的处理
      * @param shop
-     * @param shopImgInputStream
-     * @param fileName
      * @return
      * @throws ShopOperationException
      */
-    ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName) throws ShopOperationException;
+    ShopExecution addShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException;
 }
