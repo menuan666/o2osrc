@@ -253,8 +253,10 @@ public class ShopManagementController {
         String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
         ObjectMapper mapper = new ObjectMapper();
         Shop shop = null;
+        System.out.println(1);
         try {
             shop = mapper.readValue(shopStr, Shop.class);
+            System.out.println(shop);
         } catch (Exception e) {
             modelMap.put("success", false);
             modelMap.put("errMsg", e.getMessage());
@@ -269,12 +271,13 @@ public class ShopManagementController {
         }
         //2.修改店铺
         if (shop != null && shop.getShopId() != null) {
-
             ShopExecution se;
             try {
                 if (shopImg == null) {
-                    se = shopService.modifyShop(shop, null);
+                    System.out.println(shopImg);
+                    se = shopService.modifyShop(shop,new ImageHolder(null,null));
                 } else {
+                    System.out.println("bukong");
                     ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(), shopImg.getInputStream());
                     se = shopService.modifyShop(shop,imageHolder);
                 }

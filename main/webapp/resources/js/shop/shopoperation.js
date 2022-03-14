@@ -98,6 +98,13 @@ $(function () {
         };
 
         var shopImg = $('#shop-img')[0].files[0];
+        // console.log(isEmpty(shopImg))
+        // if (isEdit){
+        //     if (isEmpty(shopImg)){
+        //         shopImg = '';
+        //     }
+        // }
+        console.log(shopImg);
         if (!isEdit){
         if (isEmpty(shopImg) || isEmpty(shop.shopName) || isEmpty(shop.shopAddr) || isEmpty(shop.phone) || isEmpty(shop.shopDesc)) {
             $("#infotoast").text("请检查内容是否为空");
@@ -128,35 +135,30 @@ $(function () {
             cache: false,
             success: function (data) {
                 if (data.success) {
-
                     if (isEdit){
                         $("#successtoast").text("修改成功");
                     }else{
                         $("#successtoast").text("注册成功");
-
                     }
-
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("location1()",2000);
 
                 } else {
-
                     if (isEdit){
                         $("#infotoast").text("修改失败");
+                        console.log(data)
                     }else{
                         $("#infotoast").text("注册失败");
                     }
                     $('#fildtoast').css("display", "");
                     $('#fildtoast').css("opacity", "1");
                     setTimeout("toast1()",2000);
-
                 }
                 $('#captcha_img').click();
             }
         });
     });
-
     function isEmpty(v) {
         switch (typeof v) {
             case 'undefined':

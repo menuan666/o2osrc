@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>商品处理</title>
+
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #fff;">
+<a href="#" id="return" style="float: left;margin-left: 20px">< 返回</a>
+<div style="margin-top: 20px;margin-bottom: 20px">
+    <p id="toptitle" style="margin-left: 43%;font-weight:bolder">添加商品</p>
+</div>
+<div class="list-block">
+<label for="product-name" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">商品名称</span></div>
+    <div class="weui-cell__bd">
+        <input id="product-name" class="weui-input" placeholder="请输入商品名称">
+    </div>
+</label>
+
+<label for="category" class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+    <div class="weui-cell__hd">
+        <span class="weui-label">商品目录</span>
+    </div>
+    <div class="weui-cell__bd">
+        <select class="weui-select" id="category">
+        </select>
+    </div>
+</label>
+
+<label for="priority" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">优先级</span></div>
+    <div class="weui-cell__bd">
+        <input type="number" id="priority" class="weui-input" placeholder="请输入优先级">
+    </div>
+</label>
+
+<label for="normal-price" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">原价</span></div>
+    <div class="weui-cell__bd">
+        <input type="number" id="normal-price" class="weui-input" placeholder="可选">
+    </div>
+</label>
+
+<label for="promotion-price" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">现价</span></div>
+    <div class="weui-cell__bd">
+        <input type="number" id="promotion-price" class="weui-input" placeholder="可选">
+    </div>
+</label>
+
+<label for="shop-phone" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">积分</span></div>
+    <div class="weui-cell__bd">
+        <input id="shop-phone" class="weui-input" placeholder="可选">
+    </div>
+</label>
+
+<label for="shop-phone" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">缩略图</span></div>
+    <div class="weui-cell__bd">
+        <input type="file" id="small-img">
+    </div>
+</label>
+
+    <div class="weui-slider__inner" style="width: 95%;margin-left: 5% ;opacity:0.5;height: 1px"></div>
+    <div class="detail-img-div" style="margin-bottom: 13px;margin-top: 13px"><div style="float: left;margin-left: 4%;"><span>详情图片</span></div>
+        <div class= "item-input" id="detail-img" style="margin-left: 31%">
+        <input type="file" class="detail-img">
+        </div></div>
+
+
+    <div class="weui-slider__inner" style="width: 95%;margin-left: 5% ;opacity:0.5;height: 1px"></div>
+<div class="weui-cells__group weui-cells__group_form">
+    <div class="weui-cell__hd"><span class="weui-label" style="margin-left:17px ">商品简介</span></div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_active">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入商品简介" id="product-desc" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="weui-cell weui-cell_active" wah-hotarea="click">
+    <div class="weui-cell__hd"><label for="j_captcha" class="weui-label">验证码</label></div>
+    <div class="weui-cell__bd">
+        <input id="j_captcha" class="weui-input" placeholder="请输入验证码">
+    </div>
+    <div class="weui-cell__ft">
+        <img id="captcha_img" alt="点击更换" title="点击更换" onclick="changeVerifyCode(this)" src=" ../Kaptcha"/>
+    </div>
+</div>
+
+</div>
+
+<div class="button-sp-area" style="margin-top: 30px">
+    <div>
+        <a href="/shopadmin/productmanage" id="return1" role="button" class="weui-btn weui-btn_mini weui-btn_warn weui-wa-hotarea" style="width: 30%;margin-left: 15%">返 回</a>
+        <a href="javascript:" id="submit" role="button" class="weui-btn weui-btn_mini weui-btn_primary weui-wa-hotarea" style="width: 30%;margin-left: 10%" >添 加</a>
+    </div>
+
+    <div role="alert" id="toast" style="opacity: 0; display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <p id="infotoast" class="weui-toast__content"></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/shop/productoperation.js" charset="UTF-8"></script>
+</body>
+</html>
