@@ -1,6 +1,7 @@
 package com.shangpu.service.impl;
 
 import com.shangpu.dao.ProductCategoryDao;
+import com.shangpu.dao.ProductDao;
 import com.shangpu.dto.ProductCategoryExecution;
 import com.shangpu.entity.ProductCategory;
 import com.shangpu.enums.ProductCategoryStateEnum;
@@ -15,7 +16,8 @@ import java.util.List;
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryDao productCategoryDao;
-
+@Autowired
+private ProductDao productDao;
     @Override
     public List<ProductCategory> getProductCategoryList(long shopId) {
         return productCategoryDao.queryProductCategoryList(shopId);
@@ -44,8 +46,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     @Transactional
     public ProductCategoryExecution deleteProductCategory(long productCategoryId, long shopId) throws ProductCategoryOperationException {
-        //TODO将此商品类别下的商品的类别Id置为空
+        //解除tb_product里的商品与该producategoryId的关联
         try {
+            int effectedNum = productDao.updateProductCategoryToNull(productCategoryId);
+            if (effectedNum < 0) {
+                throw new ProductCategoryOperationException("商品类别更新失败");}
+        }catch (Exception e){
+            throw new ProductCategoryOperationException(" deleteProductCategory error: " + e.getMessage());}
+                try {
             int effectedNum = productCategoryDao.deleteProductCategory(productCategoryId, shopId);
             if (effectedNum <= 0) {
                 throw new ProductCategoryOperationException("商品类别删除失败");
