@@ -40,7 +40,7 @@ $(function () {
         //若有productId则为编辑操作
         getInfo(productId);
         isEdit = true;
-        $("#sumbit").text('修 改');
+        $("#submit").text('修 改');
         $("#toptitle").text('修改商品');
     } else {
         getCategory();

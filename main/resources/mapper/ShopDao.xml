@@ -67,7 +67,6 @@
         ORDER BY
         s.priority DESC
         LIMIT #{rowIndex},#{pageSize};
-
     </select>
     <select id="queryShopCount" resultType= "int">
     SELECT

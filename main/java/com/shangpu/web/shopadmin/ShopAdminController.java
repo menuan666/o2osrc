@@ -34,5 +34,10 @@ public class ShopAdminController {
         //商品添加编辑
         return "shop/productoperation";
     }
+    @RequestMapping(value = "/productmanagement")
+    public String productManagement(){
+        //商品列表
+        return "shop/productmanagement";
+    }
 
 }
