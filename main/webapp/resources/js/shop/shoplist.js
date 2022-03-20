@@ -20,7 +20,7 @@ $(function() {
         var html = '';
         data.map(function(item, index) {
             html += '<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">\n' +
-                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 10%">'
+                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 30%">'
                 + item.shopName + '</div></div>\n' +
                 '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 35%">'
                 + shopStatus(item.enableStatus)

@@ -32,7 +32,7 @@ $(function () {
                         contraryStatus = 0;
                     }
                     tempHtml += '' + '<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">\n' +
-                        '        <div class="weui-flex__item"><div style="margin-left: 10%">' + item.productName + '</div></div>\n' +
+                        '        <div class="weui-flex__item"><div style="margin-left: 30%">' + item.productName + '</div></div>\n' +
                         '        <div class="weui-flex__item"><div style="margin-left: 20%">' + item.priority
                         + '</div></div>\n' +
                         '        <div class="weui-flex__item">' +

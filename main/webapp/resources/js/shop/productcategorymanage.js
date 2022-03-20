@@ -18,7 +18,7 @@ $(function () {
                 dataList.map(function (item, index) {
                     tempHtml += ''
                         + '<div id="xiandiv"><div class="weui-flex oldlist" style="margin-bottom: 10px;margin-top: 10px">' +
-                        '<div class="weui-flex__item"><div class="placeholder" style="margin-left: 15%;">'
+                        '<div class="weui-flex__item"><div class="placeholder" style="margin-left: 25%;">'
                         + item.productCategoryName
                         + '</div></div><div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%;">'
                         + item.priority

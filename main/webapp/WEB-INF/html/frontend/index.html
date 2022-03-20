@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>店铺列表</title>
+
+    <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/css/zui.min.css">
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+
+<div class="container" id="container"><div class="page tabbar js_show" tabindex="-1">
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel">
+                <div style="margin-bottom: 20px">
+                    <p  style="margin-left: 43%;font-weight:800;font-size: large"> 首 页</p>
+                </div>
+                <div id="myNiceCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- 圆点指示器 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myNiceCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myNiceCarousel" data-slide-to="1"></li>
+                        <li data-target="#myNiceCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- 轮播项目 -->
+                    <div class="carousel-inner">
+
+
+                    </div>
+
+                    <!-- 项目切换按钮 -->
+                    <a class="left carousel-control" href="#myNiceCarousel" data-slide="prev">
+                        <span class="icon icon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myNiceCarousel" data-slide="next">
+                        <span class="icon icon-chevron-right"></span>
+                    </a>
+                </div>
+                <!--全类查询区-->
+                <div class= 'total-shop-button' style="margin-top: 20px">
+                    <a href="/frontend/shoplist" external>
+                        <span class="label label-badge label-success" style="font-size: larger">全部商店</span></a>
+                    <hr>
+                </div>
+<!--                表格-->
+                <div class="weui-grids row">
+
+
+<!--                    <a href="javascript:" class="weui-grid" role="button">-->
+<!--                        <div class="weui-grid__icon">-->
+<!--                            <img src="./images/icon_tabbar.png" alt="">-->
+<!--                        </div>-->
+<!--                        <p class="weui-grid__label">Grid</p>-->
+<!--                    </a>-->
+                </div>
+
+            </div>
+            <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel" style="display: none;">Amet dignissimos doloribus voluptate maxime dolorem quia Deleniti eligendi similique nisi corrupti eius aut Unde nesciunt quos quos sapiente dolorem? Odit soluta repudiandae accusantium ducimus totam accusamus. Rem ad numquam</div>
+            <div role="tablist" aria-label="选项卡标题" class="weui-tabbar">
+                <div id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true" aria-controls="panel1" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="touchend">
+                    <div id="t1_tips" aria-hidden="true" style="display: inline-block; position: relative;">
+                        <img src="\upload\index\首页.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge" style="position: absolute; top: -2px; right: -13px;">8</span>
+                    </div>
+                    <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">首页</p>
+                </div>
+                <div id="tab4" role="tab" aria-labelledby="t4_title" aria-selected="false" aria-controls="panel4" class="weui-tabbar__item" wah-hotarea="touchend">
+                    <img src="\upload\index\我的.png" alt="" class="weui-tabbar__icon">
+                    <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">我的</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page__ft j_bottom">
+        <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>
+    </div>
+</div>
+
+    <script type="text/javascript" class="tabbar js_show">
+        $(function(){
+            $('.weui-tabbar__item').on('click', function () {
+                $(this).attr('aria-selected','true').addClass('weui-bar__item_on');
+                $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected','false');
+                var panelId = '#' + $(this).attr('aria-controls');
+                $(panelId).css('display','block');
+                $(panelId).siblings('.weui-tab__panel').css('display','none');
+            });
+        });</script></div>
+
+
+<script type="text/javascript" src="../resources/js/frontend/index.js" charset="UTF-8"></script>
+</body>
+</html>

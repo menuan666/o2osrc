@@ -17,7 +17,7 @@ public class HeadLine {
     //链接：指向某一个页面
     private String lineLink;
     //轮播图
-    private String linelmg;
+    private String lineImg;
     //权重
     private Integer priority;
     //0.不可用1.可用
