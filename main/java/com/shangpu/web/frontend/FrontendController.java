@@ -13,5 +13,14 @@ public class FrontendController {
         //首页轮播
         return "frontend/index";
     }
+    @RequestMapping(value = "/shoplist",method = RequestMethod.GET)
+    public String shopList() {
+        //首页轮播
+        return "frontend/shoplist";
+    }
+    @RequestMapping(value = "/shopdetail", method = RequestMethod.GET)
+    public String shopDetail() {
+        return "frontend/shopdetail";
+    }
 
 }

@@ -40,4 +40,5 @@ public interface ShopService {
      * @throws ShopOperationException
      */
     ShopExecution addShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException;
+
 }
