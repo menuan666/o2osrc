@@ -6,44 +6,90 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <title>商品列表</title>
-
+    <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
     <link rel="stylesheet" href="../resources/WeUI/weui.css">
     <link rel="stylesheet" href="../resources/WeUI/example.css">
 </head>
 
 <body style="background: #EDEDED;">
-<a href="/shopadmin/shopmanagement" id="return" style="float: left;margin-left: 30px">< 返回</a>
-<div style="margin-top: 20px;margin-bottom: 20px">
-    <p id="toptitle" style="margin-left: 43%;font-weight:bolder">商品列表</p>
-</div>
-<div role="option" class="weui-cell">
-    <div class="weui-cell__bd">
-    </div>
-    <a href="/shopadmin/productoperation" style="float: right;color: #0000CC;margin-right: 30px">增加商品</a>
-</div>
 
-<div class="weui-flex" style="margin-bottom: 10px">
-    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 25%;color:#0080FF">商品名称</div></div>
-    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 20%;color:#0080FF">状态</div></div>
-    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 30%;color:#0080FF">操作</div></div>
-</div>
-<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;height: 1px"></div>
-<div id="divshoplist">
-    <!--<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">
-        <div class="weui-flex__item"><div style="margin-left: 30%">商品名称</div></div>
-        <div class="weui-flex__item"><div style="margin-left: 40%">状态</div></div>
-        <div class="weui-flex__item"></div>
+<div class="container" id="container">
+    <div class="page tabbar js_show" tabindex="-1">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel">
+
+                    <a href="/shopadmin/shopmanagement" id="return" style="float: left;">< 返回</a>
+                    <div style="margin-bottom: 20px">
+                        <p id="toptitle" style="margin-left: 43%;font-weight:bolder">商品列表</p>
+                    </div>
+                    <div role="option" class="weui-cell">
+                        <div class="weui-cell__bd">
+                        </div>
+                        <a href="/shopadmin/productoperation" style="float: right;color: #0000CC;">增加商品</a>
+                    </div>
+
+                    <div class="weui-flex" style="margin-bottom: 10px">
+                        <div class="weui-flex__item"><div class="placeholder" style="color:#0080FF">商品名称</div></div>
+                        <div class="weui-flex__item"><div class="placeholder" style="margin-left: 20%;color:#0080FF">状态</div></div>
+                        <div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%;color:#0080FF">操作</div></div>
+                    </div>
+                    <div class="weui-slider__inner" style="width: 100%;height: 1px"></div>
+                    <div id="divshoplist">
+                        <!--<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">
+                            <div class="weui-flex__item"><div style="margin-left: 30%">商品名称</div></div>
+                            <div class="weui-flex__item"><div style="margin-left: 40%">状态</div></div>
+                            <div class="weui-flex__item"></div>
+                        </div>
+                        <div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div>
+                        -->
+                        <!--    <a href="#" >编辑</a><a href="#" >下架</a><a href="#" >预览</a>-->
+                    </div>
+                    <div role="alert" id="toast" style="opacity: 0; display: none;">
+                        <div class="weui-mask_transparent"></div>
+                        <div class="weui-toast">
+                            <p id="infotoast" class="weui-toast__content"></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel" style="display: none;">Amet dignissimos doloribus voluptate maxime dolorem quia Deleniti eligendi similique nisi corrupti eius aut Unde nesciunt quos quos sapiente dolorem? Odit soluta repudiandae accusantium ducimus totam accusamus. Rem ad numquam</div>
+                <div role="tablist" aria-label="选项卡标题" class="weui-tabbar">
+                    <div id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true" aria-controls="panel1" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="touchend">
+                        <a href="/frontend/index"> <div id="t1_tips" aria-hidden="true" style="display: inline-block; position: relative;">
+                            <img src="\upload\index\首页.png" alt="" class="weui-tabbar__icon">
+                            <!--                        <span class="weui-badge" style="position: absolute; top: -2px; right: -13px;">8</span>-->
+                        </div>
+                            <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">首页</p></a>
+                    </div>
+                    <div id="tab4" role="tab" aria-labelledby="t4_title" aria-selected="false" aria-controls="panel4" class="weui-tabbar__item" wah-hotarea="touchend">
+                        <img src="\upload\index\我的.png" alt="" class="weui-tabbar__icon">
+                        <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">我的</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    <div class="page__ft j_bottom">-->
+        <!--        <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>-->
+        <!--    </div>-->
     </div>
-    <div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div>
-    -->
-<!--    <a href="#" >编辑</a><a href="#" >下架</a><a href="#" >预览</a>-->
-</div>
-<div role="alert" id="toast" style="opacity: 0; display: none;">
-    <div class="weui-mask_transparent"></div>
-    <div class="weui-toast">
-        <p id="infotoast" class="weui-toast__content"></p>
-    </div>
-</div>
+
+    <script type="text/javascript" class="tabbar js_show">
+        // 初始化搜索框，并在选项中指定搜索文本变更事件回调函数，这样当搜索框文本发送变化时获得通知。
+        $(function(){
+            $('.weui-tabbar__item').on('click', function () {
+                $(this).attr('aria-selected','true').addClass('weui-bar__item_on');
+                $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected','false');
+                var panelId = '#' + $(this).attr('aria-controls');
+                $(panelId).css('display','block');
+                $(panelId).siblings('.weui-tab__panel').css('display','none');
+            });
+        });</script></div>
+
+
+
+
 <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../resources/js/shop/productmanagement.js" charset="UTF-8"></script>
 </body>

@@ -18,16 +18,16 @@ $(function () {
                 dataList.map(function (item, index) {
                     tempHtml += ''
                         + '<div id="xiandiv"><div class="weui-flex oldlist" style="margin-bottom: 10px;margin-top: 10px">' +
-                        '<div class="weui-flex__item"><div class="placeholder" style="margin-left: 25%;">'
+                        '<div class="weui-flex__item"><div class="placeholder" style="margin-left: 10%;">'
                         + item.productCategoryName
                         + '</div></div><div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%;">'
                         + item.priority
                         + '</div></div>' +
-                        '    <div class="weui-flex__item"><a href="#" class="placeholder delete" style="margin-left: 40%;" data-id="'
+                        '    <div class="weui-flex__item"><a href="#" class="placeholder delete" style="margin-left: 50%;" data-id="'
                         + item.productCategoryId
                         + '">删除</a>'
                         + '</div></div>' +
-                        '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;height: 1px"></div></div>';
+                        '<div class="weui-slider__inner" style="width: 100%;height: 1px"></div></div>';
                 });
                 $('#divprodectlist').append(tempHtml);
             }

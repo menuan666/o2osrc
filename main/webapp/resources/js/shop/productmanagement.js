@@ -32,7 +32,7 @@ $(function () {
                         contraryStatus = 0;
                     }
                     tempHtml += '' + '<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">\n' +
-                        '        <div class="weui-flex__item"><div style="margin-left: 30%">' + item.productName + '</div></div>\n' +
+                        '        <div class="weui-flex__item"><div>' + item.productName + '</div></div>\n' +
                         '        <div class="weui-flex__item"><div style="margin-left: 20%">' + item.priority
                         + '</div></div>\n' +
                         '        <div class="weui-flex__item">' +
@@ -41,7 +41,7 @@ $(function () {
                         '<a href="#" class="preview" data-id="' + item.productId + '" data-status="' + item.enableStatus + '">预览</a>' +
                         '</div>\n' +
                         '    </div>\n' +
-                        '    <div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div>'
+                        '    <div class="weui-slider__inner" style="width: 100%;opacity:0.5;height: 1px"></div>'
                 });
                 $('#divshoplist').html(tempHtml);
             }

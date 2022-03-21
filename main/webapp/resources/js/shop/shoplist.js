@@ -20,15 +20,15 @@ $(function() {
         var html = '';
         data.map(function(item, index) {
             html += '<div class="weui-flex" style="margin-top: 10px;margin-bottom: 10px">\n' +
-                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 30%">'
+                '    <div class="weui-flex__item"><div class="placeholder">'
                 + item.shopName + '</div></div>\n' +
-                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 35%">'
+                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 25%">'
                 + shopStatus(item.enableStatus)
                 + '</div></div>\n' +
-                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 40%">'
+                '    <div class="weui-flex__item"><div class="placeholder" style="margin-left: 50%">'
                 + goShop(item.enableStatus, item.shopId) + '</div></div>\n' +
                 '</div>\n' +
-                '<div class="weui-slider__inner" style="width: 90%;margin-left: 5% ;opacity:0.5;height: 1px"></div>';
+                '<div class="weui-slider__inner" style="width: 100%;margin-left: 5% ;opacity:0.5;height: 1px"></div>';
         });
         $('#divshoplist').html(html);
     }
