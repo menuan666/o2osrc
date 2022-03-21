@@ -30,7 +30,7 @@ $(function() {
             success : function(data) {
                 if (data.success) {
                     console.log(data.errMsg);
-                    window.location.href = '/shopadmin/shoplist';
+                    window.location.href = '/frontend/index';
                 } else {
                     console.log(data.errMsg);
                     loginCount++;

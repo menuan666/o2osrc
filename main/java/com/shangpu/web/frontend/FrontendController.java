@@ -22,5 +22,9 @@ public class FrontendController {
     public String shopDetail() {
         return "frontend/shopdetail";
     }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "frontend/login";
+    }
 
 }
