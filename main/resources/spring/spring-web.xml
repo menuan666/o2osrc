@@ -49,6 +49,7 @@
             <mvc:exclude-mapping path="/**/*regedit*"/>
             <mvc:exclude-mapping path="/**/*login*"/>
             <mvc:exclude-mapping path="/**/*Login*"/>
+            <mvc:exclude-mapping path="/**/*Regedit*"/>
 <!--            <mvc:exclude-mapping path="/**" />-->
             <bean id="loginInterceptor" class="com.shangpu.interceptor.MyInterceptor"/>
         </mvc:interceptor>
