@@ -23,5 +23,16 @@ public class LocalAuthServiceImpl implements LocalAuthService {
         return localAuthDao.queryUserName(userName);
     }
 
+    /**
+     * 注册成功插入信息
+     *
+     * @param localAuth
+     * @return
+     */
+    @Override
+    public int insertLocalAuth(LocalAuth localAuth) {
+        return localAuthDao.insertLocalAuth(localAuth);
+    }
+
 }
 

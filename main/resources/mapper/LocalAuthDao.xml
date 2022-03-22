@@ -24,7 +24,7 @@
     </resultMap>
     <insert id="insertLocalAuth" useGeneratedKeys="true" keyColumn="local_auth_id" keyProperty="localAuthId">
         INSERT INTO tb_local_auth(user_id,username,password,create_time, last_edit_time)
-        VALUES (#{personInfo.userId}, #{personInfo.name}, #{password},
+        VALUES (#{personInfo.userId}, #{username}, #{password},
                 #{createTime}, #{lastEditTime})
     </insert>
 

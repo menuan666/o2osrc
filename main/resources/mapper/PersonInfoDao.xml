@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shangpu.dao.PersonInfoDao">
+
+
+    <insert id="insertPersonInfoname" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
+            INSERT INTO tb_person_info(name,create_time)
+            VALUES (#{name},NOW())
+        </insert>
+</mapper>
