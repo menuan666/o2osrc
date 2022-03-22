@@ -12,6 +12,7 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse, Object o) throws Exception {
+        //URL带login 放行
         if (httpServletRequest.getRequestURI().contains("login")) {
             return true;
         }
@@ -26,7 +27,8 @@ public class MyInterceptor implements HandlerInterceptor {
 
         // 用户没有登陆跳转到登陆页面
         System.out.println(2);
-        httpServletRequest.getRequestDispatcher("/frontend/login").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/frontend/login").
+                forward(httpServletRequest, httpServletResponse);
         return false;
     }
 //        System.out.println("登陆判断");
