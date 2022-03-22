@@ -18,5 +18,20 @@ public interface LocalAuthDao {
      * @return: LocalAuth
      */
     LocalAuth queryLocalByUserNameAndPwd(@Param("userName") String userName, @Param("password") String password);
+
+    /**
+     * 查询该用户名是否注册
+     * @param userName
+     * @return
+     */
+    int queryUserName(String userName);
+
+    /**
+     * 用户注册
+     * @param localauth
+     * @return
+     */
+    int insertLocalAuth(LocalAuth localauth);
+
 }
 

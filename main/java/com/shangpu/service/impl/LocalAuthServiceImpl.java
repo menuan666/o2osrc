@@ -18,5 +18,10 @@ public class LocalAuthServiceImpl implements LocalAuthService {
         return localAuthDao.queryLocalByUserNameAndPwd(userName, password);
     }
 
+    @Override
+    public int queryLocalUserName(String userName) {
+        return localAuthDao.queryUserName(userName);
+    }
+
 }
 

@@ -22,6 +22,11 @@
             <result column="enable_status" property="enableStatus" />
         </association>
     </resultMap>
+    <insert id="insertLocalAuth" useGeneratedKeys="true" keyColumn="local_auth_id" keyProperty="localAuthId">
+        INSERT INTO tb_local_auth(user_id,username,password,create_time, last_edit_time)
+        VALUES (#{personInfo.userId}, #{personInfo.name}, #{password},
+                #{createTime}, #{lastEditTime})
+    </insert>
 
     <select id="queryLocalByUserNameAndPwd"  parameterType="java.lang.String"  resultMap="localAuthResultMap">
         SELECT
@@ -49,6 +54,10 @@
             l.username = #{userName}
           AND
             l.password = #{password}
+    </select>
+    <select id="queryUserName" resultType="java.lang.Integer">
+        SELECT count(1) FROM tb_local_auth
+        WHERE username=#{UserName}
     </select>
 
 </mapper>
