@@ -24,7 +24,7 @@ public class LocalAuthController {
     @Autowired
     private PersonInfoService personInfoService;
 
-    @RequestMapping("localauthlogincheck")
+    @RequestMapping(value = "localauthlogincheck",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> localAuthLoginCheck(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -62,9 +62,9 @@ public class LocalAuthController {
         }
         return modelMap;
     }
-    @RequestMapping("localauthregister")
+    @RequestMapping(value = "/localauthregedit",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> localAuthRegister(HttpServletRequest request) {
+    public Map<String, Object> localAuthRegedit(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         if (!CodeUtil.checkVerifyCode(request)) {
             modelMap.put("success", false);
@@ -105,6 +105,24 @@ public class LocalAuthController {
         }modelMap.put("success", true);
         modelMap.put("errMsg", "注册成功");
         return modelMap;
+    }
+    @RequestMapping(value = "/checkregeditusername",method =RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> checkRegeditUserName(HttpServletRequest request) {
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        String userName = HttpServletRequestUtil.getString(request, "userName");
+        int count = localAuthService.queryLocalUserName(userName);
+        System.out.println(count);
+        if (count==0){
+            modelMap.put("success", true);
+            modelMap.put("errMsg", "用户名不存在");
+            return modelMap;
+        }else {
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "用户名已存在");
+            return modelMap;
+        }
+
     }
 }
 

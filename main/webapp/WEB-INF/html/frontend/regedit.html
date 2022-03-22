@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
-    <title>登陆</title>
+    <title>注册</title>
     <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
     <!-- ZUI 标准版压缩后的 CSS 文件 -->
     <!--    <link rel="stylesheet" href="../resources/ZUI/zui.min.css">-->
     <!--    &lt;!&ndash; ZUI 标准版压缩后的 JavaScript 文件 &ndash;&gt;-->
     <!--    <script type="text/javascript" src="../resources/ZUI/zui.min.js"></script>-->
     <!-- ZUI 标准版压缩后的 CSS 文件 -->
-<!--    <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/css/zui.min.css">-->
+
     <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-<!--    <script src="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/js/zui.min.js"></script>-->
+
     <link rel="stylesheet" href="../resources/WeUI/weui.css">
     <link rel="stylesheet" href="../resources/WeUI/example.css">
 </head>
@@ -26,26 +26,39 @@
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
                 <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel" style="display: none;">
-                    </div>
+                </div>
                 <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel">
                     <div class="weui-form__text-area">
-                        <h2 class="weui-form__title">登陆</h2>
-                        <div class="weui-form__desc">正在进行账号登录</div>
+                        <h2 class="weui-form__title">注册</h2>
+                        <div class="weui-form__desc">正在进行账号注册</div>
                     </div>
                     <div class="weui-cells" style="margin-top: 80px">
+                        <label for="name" class="weui-cell weui-cell_active">
+                            <div class="weui-cell__hd"><span class="weui-label">昵称：</span></div>
+                            <div class="weui-cell__bd">
+                                <input id="name" class="weui-input" placeholder="请输入昵称">
+                            </div>
+                        </label>
                         <label for="username" class="weui-cell weui-cell_active">
                             <div class="weui-cell__hd"><span class="weui-label">登录名：</span></div>
                             <div class="weui-cell__bd">
-                                <input id="username" class="weui-input" placeholder="填写本人登录名">
+                                <input id="username" class="weui-input" placeholder="填写唯一登录名">
                             </div>
                         </label>
+
                         <label for="psw" class="weui-cell weui-cell_active">
                             <div class="weui-cell__hd"><span class="weui-label">密码：</span></div>
                             <div class="weui-cell__bd">
                                 <input type="password" id="psw" class="weui-input" placeholder="填写密码">
                             </div>
                         </label>
-                        <div id="verifyPart" hidden="true">
+                        <label for="newpsw" class="weui-cell weui-cell_active">
+                            <div class="weui-cell__hd"><span class="weui-label">密码：</span></div>
+                            <div class="weui-cell__bd">
+                                <input type="password" id="newpsw" class="weui-input" placeholder="再次填写密码">
+                            </div>
+                        </label>
+
                             <div class="weui-cell weui-cell_active" wah-hotarea="click">
                                 <div class="weui-cell__hd"><label for="j_captcha" class="weui-label">验证码</label></div>
                                 <div class="weui-cell__bd">
@@ -55,13 +68,12 @@
                                     <img id="captcha_img" alt="点击更换" title="点击更换" onclick="changeVerifyCode(this)" src=" ../Kaptcha"/>
                                 </div>
                             </div>
-                        </div>
 
 
 
                     </div>
-                    <div  style="color:#EDEDED" class="weui-cells__tips" ><div id="register"  class="weui-link weui-wa-hotarea">还没有账号，点我注册</div></div>
-                    <button class="weui-btn weui-btn_primary" style="margin-top: 100px" type="button" id="showTooltips" wah-hotarea="click">登陆</button>
+                    <div  style="color:#EDEDED" class="weui-cells__tips" ><div id="register"  class="weui-link weui-wa-hotarea">已有账号，点我登陆</div></div>
+                    <button class="weui-btn weui-btn_primary" style="margin-top: 100px" type="button" id="showTooltips" wah-hotarea="click">注册</button>
                     <div role="alert" id="toast" style="opacity: 0; display: none;">
                         <div class="weui-mask_transparent"></div>
                         <div class="weui-toast">
@@ -90,7 +102,7 @@
         <!--    </div>-->
     </div>
 
-    </div>
+</div>
 <script type="text/javascript" class="tabbar js_show">
     $(function(){
         $('.weui-tabbar__item').on('click', function () {
@@ -102,6 +114,6 @@
         });
     });</script>
 <script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../resources/js/frontend/login.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/frontend/regedit.js" charset="UTF-8"></script>
 </body>
 </html>

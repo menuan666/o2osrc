@@ -24,7 +24,13 @@ public class FrontendController {
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        //用户登陆
         return "frontend/login";
+    }
+    @RequestMapping(value = "/regedit", method = RequestMethod.GET)
+    public String regedit() {
+        //用户注册
+        return "frontend/regedit";
     }
 
 }

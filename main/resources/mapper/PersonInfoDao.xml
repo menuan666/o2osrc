@@ -5,7 +5,7 @@
 
 
     <insert id="insertPersonInfoname" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
-            INSERT INTO tb_person_info(name,create_time)
-            VALUES (#{name},NOW())
+            INSERT INTO tb_person_info(name,enable_status,create_time)
+            VALUES (#{name},1,NOW())
         </insert>
 </mapper>

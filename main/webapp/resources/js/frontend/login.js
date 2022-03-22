@@ -61,6 +61,6 @@ $(function() {
     });
 
     $('#register').click(function() {
-        window.location.href = '/frontend/register';
+        window.location.href = '/frontend/regedit';
     });
 });
