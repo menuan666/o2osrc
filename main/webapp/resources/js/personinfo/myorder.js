@@ -30,7 +30,7 @@ $(function () {
                             '\n' +
                             '                                            </div>\n' +
                             '                                            <div class="weui-form-preview__ft">\n' +
-                            '                                                <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" data-id='+item.orderId+' >订单已完成</a>\n' +
+                            '                                                <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" data-id='+item.orderId+' >确认已取货</a>\n' +
                             '                                            </div>\n' +
                             '                                        </div>';
                     }else{
@@ -53,7 +53,7 @@ $(function () {
                             '\n' +
                             '                                            </div>\n' +
                             '                                            <div class="weui-form-preview__ft">\n' +
-                            '                                                <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" data-id='+item.orderId+' >订单已完成</a>\n' +
+                            '                                                <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" style="color: #333333" href="javascript:" data-id='+item.orderId+' >订单已完成</a>\n' +
                             '                                            </div>\n' +
                             '                                        </div>';
                     }
