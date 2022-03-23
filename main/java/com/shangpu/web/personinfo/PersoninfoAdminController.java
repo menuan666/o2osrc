@@ -11,23 +11,28 @@ public class PersoninfoAdminController {
 
     @RequestMapping(value = "/personinfo", method = RequestMethod.GET)
     public String personInfo() {
-        //首页轮播
+        //我的页面
         return "personinfo/personinfo";
     }
     @RequestMapping(value = "/modifyperson", method = RequestMethod.GET)
     public String modifyPersonInfo() {
-        //首页轮播
+        //修改个人信息
         return "personinfo/modifypersoninfo";
     }
     @RequestMapping(value = "/modifyBalance", method = RequestMethod.GET)
     public String modifybalance() {
-        //首页轮播
+        //余额充值
         return "personinfo/modifybalance";
     }
     @RequestMapping(value = "/modifypas", method = RequestMethod.GET)
     public String modifyPas() {
-        //首页轮播
+        //修改密码
         return "personinfo/modifypas";
+    }
+    @RequestMapping(value = "/myorder", method = RequestMethod.GET)
+    public String myOrder() {
+        //我的订单
+        return "personinfo/myorder";
     }
 
 

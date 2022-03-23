@@ -119,7 +119,6 @@ public class PersoninfoController {
         request.getSession().setAttribute("user", pe);
         a.setBalance(bigDecimalValue.add(pe.getBalance()));
         int count = personInfoService.updatePersonInfo(a);
-        System.out.println("shulka" + count);
         if (count == 1) {
             modelMap.put("success", true);
         } else {

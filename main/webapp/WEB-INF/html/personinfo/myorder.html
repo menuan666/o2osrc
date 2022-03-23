@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>我的订单</title>
+
+    <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/css/zui.min.css">
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+
+<div class="container" id="container">
+    <div class="page tabbar js_show" tabindex="-1">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel" style="display: none;">
+
+                </div>
+                <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel" style="display: block;">
+
+                    <div style="margin-bottom: 20px">
+                        <p id="toptitle" style="margin-left: 43%;font-weight:bolder">我的订单</p>
+                    </div>
+
+                    <div class="container" id="container1"><div class="page navbar js_show" tabindex="-1">
+                        <div class="page__bd" style="height: 100%;">
+                            <div class="weui-tab">
+                                <div class="weui-navbar">
+                                    <div role="tab" aria-controls="panel2" id="tab2" class="weui-navbar__item weui-bar__item_on"" wah-hotarea="touchend">
+                                        未完成
+                                    </div>
+                                    <div role="tab" aria-controls="panel3" id="tab3" class="weui-navbar__item" wah-hotarea="touchend">
+                                        已完成
+                                    </div>
+                                </div>
+                                <div role="tabpanel" id="panel2" aria-labelledby="tab2" class="weui-tab__panel">
+                                    <div id="wei">
+
+                                        <div class="weui-form-preview">
+                                            <div role="option" class="weui-form-preview__hd">
+                                                <div class="weui-form-preview__item">
+                                                    <label class="weui-form-preview__label">付款金额</label>
+                                                    <em class="weui-form-preview__value">¥2400.00</em>
+                                                </div>
+                                            </div>
+                                            <div role="option" aria-labelledby="p1 js_a11y_comma p2 js_a11y_comma p3" class="weui-form-preview__bd">
+                                                <div id="p1" class="weui-form-preview__item">
+                                                    <label class="weui-form-preview__label">商品</label>
+                                                    <span class="weui-form-preview__value">电动打蛋机</span>
+                                                </div>
+                                                <div id="p2" class="weui-form-preview__item">
+                                                    <label class="weui-form-preview__label">付款日期</label>
+                                                    <span class="weui-form-preview__value">名字名字名字</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="weui-form-preview__ft">
+                                                <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div style="display: none;" role="tabpanel" id="panel3" aria-labelledby="tab3" class="weui-tab__panel">
+                                    <div id="yi">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page__ft j_bottom">
+                            <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>
+                        </div>
+                    </div>
+                        <script type="text/javascript" class="navbar js_show">
+                            $(function(){
+                                $('.weui-navbar__item').on('click', function () {
+                                    $(this).attr('aria-selected','true').addClass('weui-bar__item_on');
+                                    $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected','false');
+                                    var panelId = '#' + $(this).attr('aria-controls');
+                                    $(panelId).css('display','block');
+                                    $(panelId).siblings('.weui-tab__panel').css('display','none');
+                                });
+                            });</script></div>
+
+                </div>
+                <div role="tablist" aria-label="选项卡标题" class="weui-tabbar">
+                    <div id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true"
+                         aria-controls="panel1" class="weui-tabbar__item" wah-hotarea="touchend">
+                        <a href="/frontend/index">
+                            <div id="t1_tips" aria-hidden="true" style="display: inline-block; position: relative;">
+                                <img src="\upload\index\首页.png" alt="" class="weui-tabbar__icon">
+                            </div>
+                            <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">首页</p></a>
+                    </div>
+                    <div id="tab4" role="tab" aria-labelledby="t4_title" aria-selected="false" aria-controls="panel4"
+                         class="weui-tabbar__item weui-bar__item_on" wah-hotarea="touchend">
+                        <a href="/personinfo/personinfo"> <img src="\upload\index\我的.png" alt=""
+                                                               class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">我的</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    <div class="page__ft j_bottom">-->
+        <!--        <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>-->
+        <!--    </div>-->
+    </div>
+
+    <script type="text/javascript" class="tabbar js_show">
+        $(function () {
+            $('.weui-tabbar__item').on('click', function () {
+                $(this).attr('aria-selected', 'true').addClass('weui-bar__item_on');
+                $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected', 'false');
+                var panelId = '#' + $(this).attr('aria-controls');
+                $(panelId).css('display', 'block');
+                $(panelId).siblings('.weui-tab__panel').css('display', 'none');
+            });
+        });</script>
+</div>
+
+
+<script type="text/javascript" src="../resources/js/personinfo/personinfo.js" charset="UTF-8"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@
     </insert>
 
     <select id="queryorder" resultType="com.shangpu.entity.Order">
-        SELECT order_id,create_time,price,order_type,product_name
+        SELECT order_id,create_time,price,status,order_type,product_name
         FROM tb_orders
         WHERE user_id = #{userId}
     </select>

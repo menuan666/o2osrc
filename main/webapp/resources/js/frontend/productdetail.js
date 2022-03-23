@@ -1,3 +1,7 @@
+function toast1(){
+    $('#toast').css("opacity", "0");
+    $('#toast').css("display", "none");
+}
 $(function() {
     // 从地址栏的URL里获取productId
     var productId = getQueryString('productId');
@@ -5,6 +9,9 @@ $(function() {
     // 获取商品信息的URL
     var productUrl = '/frontend/listproductdetailpageinfo?productId='
         + productId;
+    var checkUrl = '/frontend/checkbalance';
+    var product = {};
+    var orderUrl = '/frontend/productorder';
     // 访问后台获取该商品的信息并渲染
     $("#return").click(function(){
         if (isEmpty(shopId)){
@@ -12,12 +19,14 @@ $(function() {
         }else {
         window.location.href = '/frontend/shopdetail?shopId=' + shopId;}
     });
+
+
+
     $.getJSON(productUrl, function(data) {
         if (data.success) {
             // 获取商品信息
-            var product = data.product;
+            product = data.product;
             // 给商品信息相关HTML控件赋值
-
             // 商品缩略图
             $('#product-img').attr('src', product.imgAddr);
             // 商品更新时间
@@ -63,5 +72,64 @@ $(function() {
             // }
             $('#imgList').html(imgListHtml);
         }
+    });
+    $("#productorder").click(function(){
+        var check = 0;
+        $.ajax({
+            url : checkUrl,
+            async : false,
+            cache : false,
+            type : "post",
+            dataType : 'json',
+            data : {
+                price : product.promotionPrice
+            },
+            success : function(data) {
+                if (data.success) {
+                    console.log(111);
+                } else {
+                    console.log(data.errMsg);
+                    $("#infotoast").text("余额不足");
+                    $('#toast').css("display", "");
+                    $('#toast').css("opacity", "1");
+                    setTimeout("toast1()",1500);
+                    check = 1;
+                }
+            }
+        });
+        console.log("check="+check)
+        if (check == 1){
+            return;
+        }
+        var order = {};
+        order.price = product.promotionPrice;
+        order.orderType = 0;
+        order.productName = product.productName;
+        var formData = new FormData();
+        formData.append('orderStr', JSON.stringify(order));
+        $.ajax({
+            url: orderUrl,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                if (data.success) {
+                    console.log(data.errMsg)
+                    $("#infotoast").text("购买成功，请在订单中查看并取货");
+                    $('#toast').css("display", "");
+                    $('#toast').css("opacity", "1");
+                    setTimeout("toast1()",1500);
+
+                } else {
+                    console.log(data.errMsg)
+                    $("#infotoast").text("购买失败");
+                    $('#toast').css("display", "");
+                    $('#toast').css("opacity", "1");
+                    setTimeout("toast1()",1500);
+                }
+            }
+        });
     });
 });
