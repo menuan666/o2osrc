@@ -16,4 +16,11 @@ public interface PersonInfoService {
      * @return
      */
     int updatePersonInfo(PersonInfo personInfo);
+
+    /**
+     * 查询用户信息
+     * @param userId
+     * @return
+     */
+    PersonInfo selectpersoninfo(Long userId);
 }

@@ -32,4 +32,15 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     public int updatePersonInfo(PersonInfo personInfo) {
         return personInfodao.updatePersonInfo(personInfo);
     }
+
+    /**
+     * 查询用户信息
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public PersonInfo selectpersoninfo(Long userId) {
+        return personInfodao.selectpersoninfo(userId);
+    }
 }

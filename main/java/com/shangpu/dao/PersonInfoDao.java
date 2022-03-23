@@ -17,4 +17,11 @@ public interface PersonInfoDao {
      * @return
      */
     int updatePersonInfo(PersonInfo personInfo);
+
+    /**
+     * 查询个人信息
+     * @param userId
+     * @return
+     */
+    PersonInfo selectpersoninfo(Long userId);
 }

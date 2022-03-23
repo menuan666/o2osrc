@@ -20,4 +20,9 @@
         </set>
         where user_id=#{userId}
     </update>
+    <select id="selectpersoninfo" resultType="com.shangpu.entity.PersonInfo">
+        SELECT user_id, name, profile_img, email, gender, enable_status, user_type, create_time, last_edit_time, balance
+        FROM tb_person_info
+        WHERE user_id = #{userId}
+    </select>
 </mapper>

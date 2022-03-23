@@ -40,9 +40,10 @@ public class PersoninfoController {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         String username = (String) request.getSession().getAttribute("username");
+        PersonInfo per = personInfoService.selectpersoninfo(pe.getUserId());
         System.out.println(username);
         modelMap.put("success", true);
-        modelMap.put("user", pe);
+        modelMap.put("user", per);
         modelMap.put("username", username);
         return modelMap;
     }
@@ -52,6 +53,7 @@ public class PersoninfoController {
     private Map<String, Object> modifyPersonInfo(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
+        PersonInfo per = personInfoService.selectpersoninfo(pe.getUserId());
         if (!CodeUtil.checkVerifyCode(request)) {
             modelMap.put("success", false);
             modelMap.put("errMsg", "输入了错误的验证码");
@@ -77,7 +79,7 @@ public class PersoninfoController {
 
         //2.注册店铺
         if (shop != null) {
-            shop.setUserId(pe.getUserId());
+            shop.setUserId(per.getUserId());
             //File profileImg1 = new File(PathUtil.getImgBasePath() + ImageUtil.getRandomFileName());
             ImageHolder imageHolder = null;
             if (profileImg != null) {
@@ -110,15 +112,13 @@ public class PersoninfoController {
     private Map<String, Object> modifyBal(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
+        PersonInfo per = personInfoService.selectpersoninfo(pe.getUserId());
         String addbal = HttpServletRequestUtil.getString(request, "addbal");
         BigDecimal bigDecimalValue = new BigDecimal(addbal);
         System.out.println("211" + bigDecimalValue);
-        PersonInfo a = new PersonInfo();
-        a.setUserId(pe.getUserId());
-        pe.setBalance(bigDecimalValue.add(pe.getBalance()));
-        request.getSession().setAttribute("user", pe);
-        a.setBalance(bigDecimalValue.add(pe.getBalance()));
-        int count = personInfoService.updatePersonInfo(a);
+        per.setBalance(bigDecimalValue.add(per.getBalance()));
+        request.getSession().setAttribute("user", per);
+        int count = personInfoService.updatePersonInfo(per);
         if (count == 1) {
             modelMap.put("success", true);
         } else {
