@@ -39,6 +39,6 @@ public interface LocalAuthDao {
      * @param password
      * @return
      */
-    int updateLocalAuth(@Param("userName") String userName, @Param("password") String password)
+    int updateLocalAuth(@Param("userName") String userName, @Param("password") String password);
 }
 

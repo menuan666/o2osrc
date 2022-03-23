@@ -5,9 +5,18 @@ function toast1(){
 $(function () {
     var modifybal = '/personinfo/modifypassword'
     $('#sumbit').click(function() {
-        var addbal = $('#addbal').val();
-        if(isEmpty(addbal)){
-            $("#infotoast").text("金额不能为空");
+        var newpas1 = $('#newpas1').val();
+        var newpas2 = $('#newpas2').val();
+        var oldpas = $('#oldpas').val();
+        if(isEmpty(newpas2)||isEmpty(newpas1)||isEmpty(oldpas)){
+            $("#infotoast").text("密码不能为空");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            return;
+        }
+        if (newpas2 != newpas1){
+            $("#infotoast").text("两次输入的密码不一致");
             $('#toast').css("display", "");
             $('#toast').css("opacity", "1");
             setTimeout("toast1()",1500);
@@ -20,22 +29,19 @@ $(function () {
             type : "post",
             dataType : 'json',
             data : {
-                addbal : addbal
+                newpas : newpas1,
+                oldpas : oldpas
             },
             success : function(data) {
                 if (data.success) {
                     console.log(data.errMsg);
-                    // setTimeout(function (){
-                    //     window.location.href = '/';
-                    // }, 500);
-                    $("#infotoast").text("充值成功");
+                    $("#infotoast").text("修改成功");
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("toast1()",1500);
-                    getPersonInfo()
                 } else {
                     console.log(data.errMsg);
-                    $("#infotoast").text("充值失败");
+                    $("#infotoast").text("修改失败");
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("toast1()",1500);

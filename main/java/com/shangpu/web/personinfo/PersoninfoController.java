@@ -132,20 +132,20 @@ public class PersoninfoController {
     @ResponseBody
     private Map<String, Object> modifyPassword(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
+        String oldpas = HttpServletRequestUtil.getString(request, "oldpas");
+        String newpas = HttpServletRequestUtil.getString(request, "newpas");
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         String username = (String) request.getSession().getAttribute("username");
-        String oldpas = (String) request.getSession().getAttribute("oldpas");
-        String newpas = (String) request.getSession().getAttribute("oldpas");
         LocalAuth localAuth = localAuthService.queryLocalAuthByUserNameAndPwd(username, MD5.getMd5(oldpas));
+        System.out.println(username+"-"+oldpas+"--"+newpas+"--"+localAuth);
         if (localAuth!=null){
-
-        }
-
-        int count = personInfoService.updatePersonInfo(a);
-        System.out.println("shulka" + count);
-        if (count == 1) {
-            modelMap.put("success", true);
-        } else {
+            int count = localAuthService.updateLocalAuth(username,MD5.getMd5(newpas));
+            if (count == 1) {
+                modelMap.put("success", true);
+            } else {
+                modelMap.put("success", false);
+            }
+        }else {
             modelMap.put("success", false);
         }
         return modelMap;

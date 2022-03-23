@@ -24,4 +24,12 @@ public interface LocalAuthService {
      * @return
      */
     int insertLocalAuth(LocalAuth localAuth);
+
+    /**
+     * 用户改密码
+     * @param userName
+     * @param password
+     * @return
+     */
+    int updateLocalAuth(String userName, String password);
 }

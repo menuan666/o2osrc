@@ -31,7 +31,7 @@
     <update id="updateLocalAuth">
         update tb_local_auth
         SET password=#{password}
-        where user_id=#{userId}
+        where userName=#{userName}
     </update>
 
     <select id="queryLocalByUserNameAndPwd"  parameterType="java.lang.String"  resultMap="localAuthResultMap">

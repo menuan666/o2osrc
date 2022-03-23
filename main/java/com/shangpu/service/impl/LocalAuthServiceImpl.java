@@ -34,5 +34,17 @@ public class LocalAuthServiceImpl implements LocalAuthService {
         return localAuthDao.insertLocalAuth(localAuth);
     }
 
+    /**
+     * 用户改密码
+     *
+     * @param userName
+     * @param password
+     * @return
+     */
+    @Override
+    public int updateLocalAuth(String userName, String password) {
+        return localAuthDao.updateLocalAuth(userName,password);
+    }
+
 }
 
