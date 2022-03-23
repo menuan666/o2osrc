@@ -32,5 +32,10 @@ public class FrontendController {
         //用户注册
         return "frontend/regedit";
     }
+    @RequestMapping(value = "/productdetail", method = RequestMethod.GET)
+    public String productDetail() {
+        //商品详情
+        return "frontend/productdetail";
+    }
 
 }

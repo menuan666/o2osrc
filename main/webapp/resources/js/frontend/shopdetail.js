@@ -102,7 +102,7 @@ $(function () {
             '.item',
             function (e) {
                 var productId = e.currentTarget.dataset.productId;
-                window.location.href = '/frontend/productdetail?productId='
+                window.location.href = '/frontend/productdetail?shopId=' + shopId+'&productId='
                     + productId;
             });
 
