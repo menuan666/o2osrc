@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shangpu.dao.OrderDao">
+    <insert id="insertorder" useGeneratedKeys="true" keyColumn="order_id" keyProperty="orderId">
+        INSERT INTO tb_orders(create_time,price,order_type,product_name,user_id)
+        VALUES (NOW(),#{price},#{orderType},#{productName},#{personInfo.userId})
+    </insert>
+
+    <select id="queryorder" resultType="com.shangpu.entity.Order">
+        SELECT order_id,create_time,price,order_type,product_name
+        FROM tb_orders
+        WHERE user_id = #{userId}
+    </select>
+</mapper>
