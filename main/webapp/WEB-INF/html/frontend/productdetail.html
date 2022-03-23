@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>店铺详情</title>
+    <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <!--    <link rel="stylesheet" href="../resources/ZUI/zui.min.css">-->
+    <!--    &lt;!&ndash; ZUI 标准版压缩后的 JavaScript 文件 &ndash;&gt;-->
+    <!--    <script type="text/javascript" src="../resources/ZUI/zui.min.js"></script>-->
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="../resources/ZUI/zui.min.css">
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="../resources/ZUI/zui.min.js"></script>
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+
+<div class="container" id="container">
+    <div class="page tabbar js_show" tabindex="-1">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel">
+                    <a href="#" id="return" style="float: left;margin-left: 10px;margin-top: 6px">< 返回</a>
+                    <div style="margin-bottom: 20px">
+                        <p  style="margin-left: 30%;font-weight:800;font-size: large" id="product-name">商品详情</p>
+                    </div>
+                    <div class="card">
+                        <img style="object-fit:cover;width: 100%;height: 100%" id="product-img" src="" alt="">
+                        <div class="card-heading">
+                            <span id="product-time"></span></div>
+                        <div class="card-content text-muted" ><span id="product-desc"></span></div>
+                        <div class="card-actions">
+                            <span class="label label-warning">
+                                <span id="price" hidden="true">
+                                    <span class="color-gray" id="normalPrice"> </span>
+                                    <span id="promotionPrice" style="color: red; font-size: medium; "></span>
+                                </span>
+                            </span>
+                            <a href=""> <div class="pull-right">购买</div></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card-img" id="imgList">
+
+                    </div>
+                </div>
+                <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel" style="display: none;"></div>
+                <div role="tablist" aria-label="选项卡标题" class="weui-tabbar">
+                    <div id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true" aria-controls="panel1" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="touchend">
+                        <a href="/frontend/index"> <div id="t1_tips" aria-hidden="true" style="display: inline-block; position: relative;">
+                            <img src="\upload\index\首页.png" alt="" class="weui-tabbar__icon">
+                            <!--                        <span class="weui-badge" style="position: absolute; top: -2px; right: -13px;">8</span>-->
+                        </div>
+                            <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">首页</p></a>
+                    </div>
+                    <div id="tab4" role="tab" aria-labelledby="t4_title" aria-selected="false" aria-controls="panel4" class="weui-tabbar__item" wah-hotarea="touchend">
+                        <a href="/personinfo/personinfo"> <img src="\upload\index\我的.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">我的</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    <div class="page__ft j_bottom">-->
+        <!--        <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>-->
+        <!--    </div>-->
+    </div>
+
+    <script type="text/javascript" class="tabbar js_show">
+        // 初始化搜索框，并在选项中指定搜索文本变更事件回调函数，这样当搜索框文本发送变化时获得通知。
+        $('#searchboxExample').searchBox({
+            escToClear: true, // 设置点击 ESC 键清空搜索框
+            onSearchChange: function(searchKey, isEmpty) {
+                console.log('搜索框文本变更：', searchKey);
+            }
+        });
+        $(function(){
+            $('.weui-tabbar__item').on('click', function () {
+                $(this).attr('aria-selected','true').addClass('weui-bar__item_on');
+                $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected','false');
+                var panelId = '#' + $(this).attr('aria-controls');
+                $(panelId).css('display','block');
+                $(panelId).siblings('.weui-tab__panel').css('display','none');
+            });
+        });</script></div>
+
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/frontend/productdetail.js" charset="UTF-8"></script>
+</body>
+</html>
