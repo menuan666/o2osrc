@@ -15,6 +15,7 @@
             <result column="name" property="name" />
             <result column="profile_img" property="profileImg" />
             <result column="gender" property="gender" />
+            <result column="balance" property="balance" />
             <result column="email" property="email" />
             <result column="user_type" property="userType" />
             <result column="create_time" property="createTime" />
@@ -25,8 +26,13 @@
     <insert id="insertLocalAuth" useGeneratedKeys="true" keyColumn="local_auth_id" keyProperty="localAuthId">
         INSERT INTO tb_local_auth(user_id,username,password,create_time, last_edit_time)
         VALUES (#{personInfo.userId}, #{username}, #{password},
-                #{createTime}, #{lastEditTime})
+                now(), now())
     </insert>
+    <update id="updateLocalAuth">
+        update tb_local_auth
+        SET password=#{password}
+        where user_id=#{userId}
+    </update>
 
     <select id="queryLocalByUserNameAndPwd"  parameterType="java.lang.String"  resultMap="localAuthResultMap">
         SELECT
@@ -41,6 +47,7 @@
             p.gender,
             p.email,
             p.profile_img,
+            p.balance,
             p.user_type,
             p.create_time,
             p.last_edit_time,

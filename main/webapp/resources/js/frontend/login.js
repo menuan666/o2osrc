@@ -44,8 +44,11 @@ $(function() {
             success : function(data) {
                 if (data.success) {
                     console.log(data.errMsg);
-                    window.location.href = '/frontend/index';
+                    setTimeout(function (){
+                        window.location.href = '/frontend/index';
+                    }, 500);
                 } else {
+                    console.log(data.errMsg);
                     $("#infotoast").text("登陆失败");
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
@@ -59,7 +62,6 @@ $(function() {
             }
         });
     });
-
     $('#register').click(function() {
         window.location.href = '/frontend/regedit';
     });

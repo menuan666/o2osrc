@@ -8,4 +8,16 @@
             INSERT INTO tb_person_info(name,enable_status,create_time)
             VALUES (#{name},1,NOW())
         </insert>
+    <update id="updatePersonInfo" parameterType="com.shangpu.entity.PersonInfo">
+        update tb_person_info
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="profileImg != null">profile_img=#{profileImg},</if>
+            <if test="email != null">email=#{email},</if>
+            <if test="gender != null">gender=#{gender},</if>
+            <if test="balance != null">balance=#{balance},</if>
+            <if test="lastEditTime != null">last_edit_time=#{lastEditTime}</if>
+        </set>
+        where user_id=#{userId}
+    </update>
 </mapper>

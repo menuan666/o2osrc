@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>余额充值</title>
+
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+<a href="/personinfo/personinfo" id="return" style="float: left;margin-left: 20px">< 返回</a>
+<div style="margin-top: 20px;margin-bottom: 20px">
+    <p id="toptitle" style="margin-left: 43%;font-weight:bolder">余额充值</p>
+</div>
+<label for="mybal" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">我的余额</span></div>
+    <div class="weui-cell__bd">
+        <input id="mybal" class="weui-input">
+    </div>
+</label>
+<label for="addbal" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">充值金额</span></div>
+    <div class="weui-cell__bd">
+        <input id="addbal" class="weui-input" placeholder="请输入充值金额">
+    </div>
+</label>
+
+<div class="button-sp-area" style="margin-top: 30px">
+    <div>
+        <a href="javascript:" role="button" id="sumbit" class="weui-btn weui-btn_primary">充 值</a>
+    </div>
+    <div role="alert" id="toast" style="opacity: 0; display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <p id="infotoast" class="weui-toast__content"></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/personinfo/modifybalance.js" charset="UTF-8"></script>
+</body>
+</html>

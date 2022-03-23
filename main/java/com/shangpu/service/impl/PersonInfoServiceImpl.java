@@ -21,4 +21,15 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     public int insertPersonInfoname(PersonInfo personInfo) {
         return personInfodao.insertPersonInfoname(personInfo);
     }
+
+    /**
+     * 用户修改个人信息
+     *
+     * @param personInfo
+     * @return
+     */
+    @Override
+    public int updatePersonInfo(PersonInfo personInfo) {
+        return personInfodao.updatePersonInfo(personInfo);
+    }
 }

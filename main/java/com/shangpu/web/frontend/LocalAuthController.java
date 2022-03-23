@@ -50,6 +50,8 @@ public class LocalAuthController {
             if (localAuth != null) {
                 // 将personInfo写入session中
                 request.getSession().setAttribute("user", localAuth.getPersonInfo());
+                request.getSession().setAttribute("username", userName);
+                System.out.println(localAuth.getPersonInfo());
                 modelMap.put("success", true);
                 modelMap.put("errMsg", "登录成功");
             } else {

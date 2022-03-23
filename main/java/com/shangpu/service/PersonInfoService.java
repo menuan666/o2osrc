@@ -9,4 +9,11 @@ public interface PersonInfoService {
      * @return
      */
     int insertPersonInfoname(PersonInfo personInfo);
+
+    /**
+     * 用户修改个人信息
+     * @param personInfo
+     * @return
+     */
+    int updatePersonInfo(PersonInfo personInfo);
 }

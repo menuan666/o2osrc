@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>我的信息</title>
+
+    <script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/css/zui.min.css">
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="//cdn.bootcdn.net/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+
+<div class="container" id="container">
+    <div class="page tabbar js_show" tabindex="-1">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div id="panel1" role="tabpanel" aria-labelledby="tab1" class="weui-tab__panel" style="display: none;">
+
+                </div>
+                <div id="panel4" role="tabpanel" aria-labelledby="tab4" class="weui-tab__panel" style="display: block;">
+
+                    <div><a href="/personinfo/modifyperson">
+                        <img src="" id="userimg" style="border-radius: 50%;width: 100px;height: 100px;margin-left: 20px;
+margin-top: 20px;margin-bottom: 30px">
+                        <span id="username" style="font-size: 15px;margin-left: 10px">你好,sdadasd</span>
+                    </a></div>
+
+                    <a aria-labelledby="js_cell_tl1_tips js_cell_tl1_link" class="weui-cell weui-cell_access" href="/personinfo/modifyBalance">
+                <span class="weui-cell__bd" id="js_cell_tl1_tips" aria-hidden="true">
+                    <span>余额：</span>
+                </span>
+                        <span class="weui-cell__ft" aria-hidden="true" id="js_cell_tl1_link"></span>
+                    </a>
+
+                    <a class="weui-cell  weui-cell_access" href="/shopadmin/shoplist">
+                <span class="weui-cell__bd">
+                    <span>我的店铺</span>
+                </span>
+                        <span class="weui-cell__ft">
+                </span>
+                    </a>
+                    <a class="weui-cell  weui-cell_access" href="javascript:">
+                <span class="weui-cell__bd">
+                    <span>我的发布</span>
+                </span>
+                        <span class="weui-cell__ft">
+                </span>
+                    </a>
+                    <a class="weui-cell  weui-cell_access" href="javascript:">
+                <span class="weui-cell__bd">
+                    <span>我的订单</span>
+                </span>
+                        <span class="weui-cell__ft">
+                </span>
+                    </a>
+                    <a class="weui-cell  weui-cell_access" href="/personinfo/modifypas">
+                <span class="weui-cell__bd">
+                    <span>密码修改</span>
+                </span>
+                        <span class="weui-cell__ft">
+                </span>
+                    </a>
+
+
+
+                </div>
+                <div role="tablist" aria-label="选项卡标题" class="weui-tabbar">
+                    <div id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true" aria-controls="panel1" class="weui-tabbar__item" wah-hotarea="touchend">
+                        <a href="/frontend/index"><div id="t1_tips" aria-hidden="true" style="display: inline-block; position: relative;">
+                             <img src="\upload\index\首页.png" alt="" class="weui-tabbar__icon">
+                            </div>
+                        <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">首页</p></a>
+                    </div>
+                    <div id="tab4" role="tab" aria-labelledby="t4_title" aria-selected="false" aria-controls="panel4" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="touchend">
+                        <a href="/personinfo/personinfo"> <img src="\upload\index\我的.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">我的</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    <div class="page__ft j_bottom">-->
+        <!--        <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>-->
+        <!--    </div>-->
+    </div>
+
+    <script type="text/javascript" class="tabbar js_show">
+        $(function(){
+            $('.weui-tabbar__item').on('click', function () {
+                $(this).attr('aria-selected','true').addClass('weui-bar__item_on');
+                $(this).siblings('.weui-bar__item_on').removeClass('weui-bar__item_on').attr('aria-selected','false');
+                var panelId = '#' + $(this).attr('aria-controls');
+                $(panelId).css('display','block');
+                $(panelId).siblings('.weui-tab__panel').css('display','none');
+            });
+        });</script></div>
+
+
+<script type="text/javascript" src="../resources/js/personinfo/personinfo.js" charset="UTF-8"></script>
+</body>
+</html>

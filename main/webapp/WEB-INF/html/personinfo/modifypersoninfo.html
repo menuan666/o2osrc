@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>信息修改</title>
+
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+<a href="/personinfo/personinfo" id="return" style="float: left;margin-left: 20px">< 返回</a>
+<div style="margin-top: 20px;margin-bottom: 20px">
+    <p id="toptitle" style="margin-left: 43%;font-weight:bolder">个人信息修改</p>
+</div>
+<label for="name" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">昵称</span></div>
+    <div class="weui-cell__bd">
+        <input id="name" class="weui-input" placeholder="请输入昵称">
+    </div>
+</label>
+
+<label for="userName" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">唯一登录名</span></div>
+    <div class="weui-cell__bd">
+        <input id="userName" class="weui-input">
+    </div>
+</label>
+
+<label for="userimg" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">头像</span></div>
+    <div class="weui-cell__bd">
+        <input type="file" id="userimg">
+    </div>
+</label>
+<label for="gender" class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+    <div class="weui-cell__hd">
+        <span class="weui-label">性别</span>
+    </div>
+    <div class="weui-cell__bd">
+        <select class="weui-select" id="gender">
+            <option>男</option>
+            <option>女</option>
+        </select>
+    </div>
+</label>
+
+
+<label for="email" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">邮箱</span></div>
+    <div class="weui-cell__bd">
+        <input id="email" class="weui-input" placeholder="请输入邮箱">
+    </div>
+</label>
+
+<div class="weui-cell weui-cell_active" wah-hotarea="click">
+    <div class="weui-cell__hd"><label for="j_captcha" class="weui-label">验证码</label></div>
+    <div class="weui-cell__bd">
+        <input id="j_captcha" class="weui-input" placeholder="请输入验证码">
+    </div>
+    <div class="weui-cell__ft">
+        <img id="captcha_img" alt="点击更换" title="点击更换" onclick="changeVerifyCode(this)" src=" ../Kaptcha"/>
+    </div>
+</div>
+
+<div class="button-sp-area" style="margin-top: 30px">
+    <div>
+        <a href="javascript:" role="button" id="sumbit" class="weui-btn weui-btn_primary">修  改</a>
+    </div>
+    <div role="alert" id="toast" style="opacity: 0; display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <p id="infotoast" class="weui-toast__content"></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/personinfo/modifypersoninfo.js" charset="UTF-8"></script>
+</body>
+</html>
