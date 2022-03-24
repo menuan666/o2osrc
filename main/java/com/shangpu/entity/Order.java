@@ -11,6 +11,8 @@ public class Order {
     private Date createTime;
     //价格
     private String price;
+    //取货码
+    private String code;
     //商品名
     private int orderType;
     //商品名

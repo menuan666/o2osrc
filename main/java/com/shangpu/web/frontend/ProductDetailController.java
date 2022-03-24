@@ -1,10 +1,13 @@
 package com.shangpu.web.frontend;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mchange.v2.lock.ExactReentrantSharedUseExclusiveUseLock;
@@ -98,12 +101,15 @@ public class ProductDetailController {
         p.setUserId(pe.getUserId());
         pe.setBalance(newbla);
         p.setBalance(newbla);
+        String code = String.valueOf(getAccessCode(pe.getUserId()));
+
         int aa = personInfoService.updatePersonInfo(p);
         request.getSession().setAttribute("user", pe);
         System.out.println(aa);
         if (aa == 1){
             shop.setPersonInfo(pe);
             System.out.println(shop);
+            shop.setCode(code);
             int count = orderService.insertorder(shop);
             if (count == 1){
                 modelMap.put("success", true);
@@ -119,6 +125,10 @@ public class ProductDetailController {
             modelMap.put("errMsg", "更新余额失败");
             return modelMap;
         }
+    }
+    public Long getAccessCode(Long userId){
+        Long a = System.currentTimeMillis()+userId;
+        return a;
     }
 
 }

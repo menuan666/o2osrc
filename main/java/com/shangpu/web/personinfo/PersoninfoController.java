@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -147,6 +148,14 @@ public class PersoninfoController {
         }else {
             modelMap.put("success", false);
         }
+        return modelMap;
+    }
+    @RequestMapping(value = "/returnlog", method = RequestMethod.POST)
+    @ResponseBody
+    private Map<String, Object> returnlog(HttpServletRequest request) {
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        request.getSession().removeAttribute("user");
+
         return modelMap;
     }
 }

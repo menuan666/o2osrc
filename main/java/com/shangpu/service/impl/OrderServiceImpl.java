@@ -32,4 +32,15 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> queryorder(Long userId) {
         return orderDao.queryorder(userId);
     }
+
+    /**
+     * 修改订单
+     *
+     * @param order
+     * @return
+     */
+    @Override
+    public int updateorder(Order order) {
+        return orderDao.updateorder(order);
+    }
 }

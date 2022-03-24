@@ -4,12 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shangpu.dao.OrderDao">
     <insert id="insertorder" useGeneratedKeys="true" keyColumn="order_id" keyProperty="orderId">
-        INSERT INTO tb_orders(create_time,price,order_type,product_name,user_id)
-        VALUES (NOW(),#{price},#{orderType},#{productName},#{personInfo.userId})
+        INSERT INTO tb_orders(create_time,price,order_type,product_name,code,user_id)
+        VALUES (NOW(),#{price},#{orderType},#{productName},#{code},#{personInfo.userId})
     </insert>
+    <update id="updateorder">
+        update tb_orders
+        <set>
+            <if test="price != null">price=#{price},</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="productName != null">product_name=#{productName}</if>
+        </set>
+        where order_id=#{orderId} AND user_id = #{personInfo.userId}
+    </update>
 
     <select id="queryorder" resultType="com.shangpu.entity.Order">
-        SELECT order_id,create_time,price,status,order_type,product_name
+        SELECT order_id,create_time,price,status,order_type,code,product_name
         FROM tb_orders
         WHERE user_id = #{userId}
     </select>

@@ -18,4 +18,11 @@ public interface OrderService {
      * @return
      */
     List<Order> queryorder(Long userId);
+
+    /**
+     * 修改订单
+     * @param order
+     * @return
+     */
+    int updateorder(Order order);
 }
