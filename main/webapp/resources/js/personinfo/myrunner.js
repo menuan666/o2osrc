@@ -3,14 +3,14 @@ $(function() {
     var runnerlistUrl = '/personinfo/queryrunnerlist';
     var updateUrl = '/personinfo/modifystatus';
     getRunnerList()
-
+    var userId;
     function getRunnerList() {
         $.getJSON(runnerlistUrl, function (data) {
             if (data.success) {
                 console.log(data);
                 var weitempAreaHtml = '';
                 var yitempAreaHtml = '';
-                var userId = data.userId;
+                userId = data.userId;
                 console.log(userId);
                 data.runnerlist.map(function (item, index) {
                     if (userId === item.userId){

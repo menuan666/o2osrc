@@ -1,21 +1,25 @@
+function toast1(){
+    $('#toast').css("opacity", "0");
+    $('#toast').css("display", "none");
+}
 $(function() {
     //定义访问后台，获取头条列表以及一级类别列表的URL
     var url = '/frontend/listmainpageinfo';
     var runnerlistUrl = '/personinfo/queryrunnerlist';
     var updateUrl = '/personinfo/modifystatus';
+    var userId;
     getRunnerList()
     //访问后台，获取头条列表以及一级类别列表
     $.getJSON(url, function (data) {
         if (data.success) {
-            console.log(data)
             //获取后台传递过来的头条列表
+
             var headLineList = data.headLineList;
             var swiperHtml = '<div class="item active">\n' +
                 '                            <img alt="最新消息" src="https://t7.baidu.com/it/u=737555197,308540855&fm=193&f=GIF">\n' +
                 '                        </div>';
             //遍历头条列表，并拼接出轮播图组
             headLineList.map(function (item, index) {
-                console.log(index)
                 swiperHtml += '<div class="item " >\n' +
                     '<a href="'+item.lineLink+'"external >' +
                     '<img src="'+item.lineImg+'" alt="'+ item.lineName +'"></a></div>';
@@ -50,7 +54,7 @@ $(function() {
     function getRunnerList() {
         $.getJSON(runnerlistUrl, function (data) {
             if (data.success) {
-                console.log(data.runnerlist);
+                userId = data.userId;
                 var weitempAreaHtml = '';
                 data.runnerlist.map(function (item, index) {
                     if (item.status!=1&&item.status!=2){
@@ -79,7 +83,7 @@ $(function() {
                             '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
-                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id='+item.runnerId+'>我要接单</a>\n' +
+                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-userid='+item.userId+' data-id='+item.runnerId+'>我要接单</a>\n' +
                             '                        </div>\n' +
                             '                    </div>';
                     }
@@ -91,9 +95,16 @@ $(function() {
         });
     }
     $('#runnerdiv').on('click', 'a', function (e) {
+        var uid = $(e.currentTarget).data("userid");
         //var target = $(e.currentTarget);
         var id =  e.currentTarget.dataset.id;
-        console.log(id);
+        if (uid===userId){
+            $("#infotoast").text("不可以接自己的订单");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            return;
+        }
         $.ajax({
             url : updateUrl,
             async : false,
@@ -105,10 +116,13 @@ $(function() {
             },
             success : function(data) {
                 if (data.success) {
-                    console.log(11);
+                    $("#infotoast").text("接单成功，可前往跑腿订单中查看");
+                    $('#toast').css("display", "");
+                    $('#toast').css("opacity", "1");
+                    setTimeout("toast1()",1500);
                     getRunnerList();
                 } else {
-                    console.log(22);
+                    console.log("Error");
                 }
             }
         });

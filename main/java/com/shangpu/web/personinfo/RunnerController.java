@@ -100,6 +100,7 @@ public class RunnerController {
         Runner runner = new Runner();
         runner.setRunnerId(runnerId);
         runner.setStatus(1);
+        runner.setGetUserId(pe.getUserId());
         int count = runnerService.updaterunnerstatus(runner);
         if (count == 1){
             modelMap.put("success", true);
