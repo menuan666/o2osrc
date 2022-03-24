@@ -12,6 +12,7 @@ $(function () {
         runner.runnerName = $('#name').val();
         runner.price = $('#price').val();
         runner.runnerDesc = $('#runner-desc').val();
+        runner.phone = $('#phone').val();
         if (isEmpty(runner.runnerName) || isEmpty(runner.price) || isEmpty(runner.runnerDesc)) {
             $("#infotoast").text("请检查内容是否为空");
             $('#toast').css("display", "");

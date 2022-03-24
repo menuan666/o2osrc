@@ -4,14 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shangpu.dao.RunnerDao">
     <insert id="insertRunner">
-        INSERT INTO tb_runner(runner_name, runner_desc,
+        INSERT INTO tb_runner(runner_name, phone,runner_desc,
                               create_time, price, user_id)
-        VALUES (#{runnerName},#{runnerDesc},NOW(),#{price},#{personInfo.userId})
+        VALUES (#{runnerName},#{phone},#{runnerDesc},NOW(),#{price},#{userId})
     </insert>
     <update id="updaterunnerstatus">
         update tb_runner
         <set>
-            <if test="status != null">status=#{status}</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="getUserId != null">get_user_id=#{getUserId},</if>
         </set>
         where runner_id=#{runnerId}
     </update>

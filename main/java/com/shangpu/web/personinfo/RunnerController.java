@@ -62,7 +62,7 @@ public class RunnerController {
         }
         int i = personInfoService.updatePersonInfo(pe);
         if (i == 1){
-            runner.setPersonInfo(pe);
+            runner.setUserId(pe.getUserId());
             System.out.println(runner);
             int count = runnerService.insertRunner(runner);
             if (count == 1){

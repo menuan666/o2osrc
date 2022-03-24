@@ -39,6 +39,11 @@ public class PersoninfoAdminController {
         //发布跑腿
         return "personinfo/runneroperation";
     }
+    @RequestMapping(value = "/myrunner", method = RequestMethod.GET)
+    public String myRunner() {
+        //发布跑腿
+        return "personinfo/myrunner";
+    }
 
 
 }

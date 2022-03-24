@@ -24,8 +24,7 @@ public interface RunnerDao {
 
     /**
      * 更新订单状态
-     * @param userId
-     * @param runnerId
+     *
      * @return
      */
     int updaterunnerstatus(Runner runner);

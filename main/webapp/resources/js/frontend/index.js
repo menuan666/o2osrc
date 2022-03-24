@@ -70,6 +70,10 @@ $(function() {
                             '                                <label class="weui-form-preview__label">描述</label>\n' +
                             '                                <span class="weui-form-preview__value">'+item.runnerName+'</span>\n' +
                             '                            </div>\n' +
+                            '                            <div id="p4" class="weui-form-preview__item">\n' +
+                            '                                <label class="weui-form-preview__label">联系方式</label>\n' +
+                            '                                <span class="weui-form-preview__value">'+item.phone+'</span>\n' +
+                            '                            </div>\n' +
                             '                            <div id="p3" class="weui-form-preview__item">\n' +
                             '                                <label class="weui-form-preview__label">发布时间</label>\n' +
                             '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +

@@ -11,6 +11,8 @@ public class Runner {
     private Date createTime;
     //跑腿名字
     private String runnerName;
+    //联系方式
+    private String phone;
     //跑腿描述
     private String runnerDesc;
     //价格
@@ -18,7 +20,7 @@ public class Runner {
     //是否完成 0未完成 1进行中 2已完成
     private int status;
     //个人信息
-    private PersonInfo personInfo;
+    private Long userId;
     //接单人信息
-    private PersonInfo getPersonInfo;
+    private Long getUserId;
 }
