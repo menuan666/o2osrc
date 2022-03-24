@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -150,12 +151,20 @@ public class PersoninfoController {
         }
         return modelMap;
     }
-    @RequestMapping(value = "/returnlog", method = RequestMethod.POST)
+    @RequestMapping(value = "/returnlog", method = RequestMethod.GET)
     @ResponseBody
     private Map<String, Object> returnlog(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         request.getSession().removeAttribute("user");
-
+        HttpSession session = request.getSession();
+        Object oo = session.getAttribute("user");
+        System.out.println(oo);
+        // 如果用户已登陆也放行
+        if(oo == null) {
+           modelMap.put("success",true);
+        }else {
+            modelMap.put("success",false);
+        }
         return modelMap;
     }
 }

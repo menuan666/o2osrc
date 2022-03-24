@@ -1,5 +1,6 @@
 $(function () {
     var initUrl = '/personinfo/getpersoninfo';
+    var returnlog = '/personinfo/returnlog';
     getPersonInfo();
     function getPersonInfo() {
         $.getJSON(initUrl, function (data) {
@@ -11,4 +12,11 @@ $(function () {
             }
         });
     }
+    $('#returnlogin').click(function(){
+        $.getJSON(returnlog, function (data) {
+            if (data.success) {
+                window.location.href="/frontend/login";
+            }
+        });
+    });
 })
