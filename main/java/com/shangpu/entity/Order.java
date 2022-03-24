@@ -10,7 +10,7 @@ public class Order {
     //创建时间
     private Date createTime;
     //价格
-    private String price;
+    private double price;
     //取货码
     private String code;
     //商品名

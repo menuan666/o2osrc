@@ -1,7 +1,9 @@
 $(function() {
     //定义访问后台，获取头条列表以及一级类别列表的URL
     var url = '/frontend/listmainpageinfo';
-
+    var runnerlistUrl = '/personinfo/queryrunnerlist';
+    var updateUrl = '/personinfo/modifystatus';
+    getRunnerList()
     //访问后台，获取头条列表以及一级类别列表
     $.getJSON(url, function (data) {
         if (data.success) {
@@ -43,6 +45,69 @@ $(function() {
         var shopCategoryId = e.currentTarget.dataset.category;
         var newUrl = '/frontend/shoplist?parentId=' + shopCategoryId;
         window.location.href = newUrl;
+    });
+
+    function getRunnerList() {
+        $.getJSON(runnerlistUrl, function (data) {
+            if (data.success) {
+                console.log(data.runnerlist);
+                var weitempAreaHtml = '';
+                data.runnerlist.map(function (item, index) {
+                    if (item.status!=1&&item.status!=2){
+                        weitempAreaHtml += '<div class="weui-form-preview" style="margin-top: 30px">\n' +
+                            '                        <div role="option" class="weui-form-preview__hd">\n' +
+                            '                            <div class="weui-form-preview__item">\n' +
+                            '                                <label class="weui-form-preview__label">跑腿报酬</label>\n' +
+                            '                                <em class="weui-form-preview__value">¥'+item.price+'</em>\n' +
+                            '                            </div>\n' +
+                            '                        </div>\n' +
+                            '                        <div role="option" aria-labelledby="p1 js_a11y_comma p2 js_a11y_comma p3" class="weui-form-preview__bd">\n' +
+                            '                            <div id="p1" class="weui-form-preview__item">\n' +
+                            '                                <label class="weui-form-preview__label">标题</label>\n' +
+                            '                                <span class="weui-form-preview__value">'+item.runnerName+'</span>\n' +
+                            '                            </div>\n' +
+                            '                            <div id="p2" class="weui-form-preview__item">\n' +
+                            '                                <label class="weui-form-preview__label">描述</label>\n' +
+                            '                                <span class="weui-form-preview__value">'+item.runnerName+'</span>\n' +
+                            '                            </div>\n' +
+                            '                            <div id="p3" class="weui-form-preview__item">\n' +
+                            '                                <label class="weui-form-preview__label">发布时间</label>\n' +
+                            '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
+                            '                            </div></div>\n' +
+                            '                        <div class="weui-form-preview__ft">\n' +
+                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id='+item.runnerId+'>我要接单</a>\n' +
+                            '                        </div>\n' +
+                            '                    </div>';
+                    }
+                });
+                $('#runnerdiv').html(weitempAreaHtml);
+            }else {
+                console.log(11)
+            }
+        });
+    }
+    $('#runnerdiv').on('click', 'a', function (e) {
+        //var target = $(e.currentTarget);
+        var id =  e.currentTarget.dataset.id;
+        console.log(id);
+        $.ajax({
+            url : updateUrl,
+            async : false,
+            cache : false,
+            type : "post",
+            dataType : 'json',
+            data : {
+                runnerId : id
+            },
+            success : function(data) {
+                if (data.success) {
+                    console.log(11);
+                    getRunnerList();
+                } else {
+                    console.log(22);
+                }
+            }
+        });
     });
 
 });

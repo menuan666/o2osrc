@@ -8,6 +8,13 @@
                               create_time, price, user_id)
         VALUES (#{runnerName},#{runnerDesc},NOW(),#{price},#{personInfo.userId})
     </insert>
+    <update id="updaterunnerstatus">
+        update tb_runner
+        <set>
+            <if test="status != null">status=#{status}</if>
+        </set>
+        where runner_id=#{runnerId}
+    </update>
     <select id="selectrunner" resultType="com.shangpu.entity.Runner">
         SELECT *
         FROM tb_runner

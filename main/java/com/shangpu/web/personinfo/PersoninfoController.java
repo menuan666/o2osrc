@@ -103,14 +103,17 @@ public class PersoninfoController {
 
     @RequestMapping(value = "/modifybal", method = RequestMethod.POST)
     @ResponseBody
-    private Map<String, Object> modifyBal(HttpServletRequest request) {
+    private Map<String, Object> modifyBal(HttpServletRequest request) throws NumberFormatException{
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         PersonInfo per = personInfoService.selectpersoninfo(pe.getUserId());
-        String addbal = HttpServletRequestUtil.getString(request, "addbal");
-        BigDecimal bigDecimalValue = new BigDecimal(addbal);
-        System.out.println("211" + bigDecimalValue);
-        per.setBalance(bigDecimalValue.add(per.getBalance()));
+        int addbal = Integer.parseInt(HttpServletRequestUtil.getString(request, "addbal"));
+        System.out.println(per.getBalance());
+        double newbal = per.getBalance();
+        System.out.println("newbal="+newbal);
+        System.out.println(addbal+"--"+newbal);
+        per.setBalance(newbal+addbal);
+        System.out.println(per);
         request.getSession().setAttribute("user", per);
         int count = personInfoService.updatePersonInfo(per);
         if (count == 1) {

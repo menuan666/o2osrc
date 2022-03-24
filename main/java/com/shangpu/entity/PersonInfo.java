@@ -22,7 +22,7 @@ public class PersonInfo {
     //性别
     private String gender;
     //用户余额
-    private BigDecimal balance;
+    private double balance;
     //用户状态
     private Integer enableStatus;
     //1.顾客 2.店家 3.超级管理员

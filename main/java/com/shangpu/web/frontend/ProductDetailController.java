@@ -69,7 +69,7 @@ public class ProductDetailController {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         int price = HttpServletRequestUtil.getInt(request, "price");
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
-        int i = pe.getBalance().intValue();
+        double i = pe.getBalance();
         System.out.println(price+"  "+i);
         if(i>price){
             modelMap.put("success", true);
@@ -84,7 +84,7 @@ public class ProductDetailController {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         String orderStr = HttpServletRequestUtil.getString(request, "orderStr");
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
-        int i = pe.getBalance().intValue();
+        double i = pe.getBalance();
         System.out.println("jiage"+i);
         ObjectMapper mapper = new ObjectMapper();
         Order shop = null;
@@ -95,8 +95,8 @@ public class ProductDetailController {
             modelMap.put("errMsg", "转换错误");
             return modelMap;
         }
-        int j = Integer.parseInt(shop.getPrice());
-        BigDecimal newbla = BigDecimal.valueOf(i-j);
+        double j = shop.getPrice();
+        double newbla = i-j;
         PersonInfo p = new PersonInfo();
         p.setUserId(pe.getUserId());
         pe.setBalance(newbla);

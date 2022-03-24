@@ -4,9 +4,10 @@ import com.shangpu.dao.RunnerDao;
 import com.shangpu.entity.Runner;
 import com.shangpu.service.RunnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class RunnerServiceImpl implements RunnerService {
     @Autowired
     private RunnerDao runnerDao;
@@ -31,5 +32,16 @@ public class RunnerServiceImpl implements RunnerService {
     @Override
     public int insertRunner(Runner runner) {
         return runnerDao.insertRunner(runner);
+    }
+
+    /**
+     * 修改订单状态
+     *
+     * @param runner
+     * @return
+     */
+    @Override
+    public int updaterunnerstatus(Runner runner) {
+        return runnerDao.updaterunnerstatus(runner);
     }
 }

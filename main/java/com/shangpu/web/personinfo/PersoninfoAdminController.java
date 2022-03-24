@@ -34,6 +34,11 @@ public class PersoninfoAdminController {
         //我的订单
         return "personinfo/myorder";
     }
+    @RequestMapping(value = "/runneroperation", method = RequestMethod.GET)
+    public String runnerOperation() {
+        //发布跑腿
+        return "personinfo/runneroperation";
+    }
 
 
 }

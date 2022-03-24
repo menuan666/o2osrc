@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>发布跑腿订单</title>
+
+    <link rel="stylesheet" href="../resources/WeUI/weui.css">
+    <link rel="stylesheet" href="../resources/WeUI/example.css">
+</head>
+
+<body style="background: #EDEDED;">
+<a href="/personinfo/personinfo" id="return" style="float: left;margin-left: 20px">< 返回</a>
+<div style="margin-top: 20px;margin-bottom: 20px">
+    <p id="toptitle" style="margin-left: 43%;font-weight:bolder">发布跑腿订单</p>
+</div>
+<label for="name" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">名称</span></div>
+    <div class="weui-cell__bd">
+        <input id="name" class="weui-input" placeholder="例如：占座，买饭">
+    </div>
+</label>
+<div class="weui-slider__inner" style="width: 100%;opacity:0.5;height: 1px"></div>
+<div class="weui-cells__group weui-cells__group_form">
+    <div class="weui-cell__hd"><span class="weui-label" style="margin-left:17px ">跑腿描述</span></div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_active">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="做什么，送到哪" id="runner-desc" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<label for="price" class="weui-cell weui-cell_active">
+    <div class="weui-cell__hd"><span class="weui-label">报酬</span></div>
+    <div class="weui-cell__bd">
+        <input type="number" id="price" class="weui-input" placeholder="请输入价格">
+    </div>
+</label>
+
+
+<div class="button-sp-area" style="margin-top: 30px">
+    <div>
+        <a href="javascript:" role="button" id="sumbit" class="weui-btn weui-btn_primary">发 布</a>
+    </div>
+    <div role="alert" id="toast" style="opacity: 0; display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <p id="infotoast" class="weui-toast__content"></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../resources/js/common/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/common/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../resources/js/personinfo/runneroperation.js" charset="UTF-8"></script>
+</body>
+</html>
