@@ -85,6 +85,7 @@ public class LocalAuthController {
                 password = MD5.getMd5(password);
                 lo.setPassword(password);
                 lo.setUsername(userName);
+                pe.setProfileImg("/upload/personinfo/touxiang.png");
                 int count = personInfoService.insertPersonInfoname(pe);
                 if (count!=1){
                     modelMap.put("success", false);

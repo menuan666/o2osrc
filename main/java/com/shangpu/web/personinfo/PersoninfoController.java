@@ -2,12 +2,8 @@ package com.shangpu.web.personinfo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shangpu.dto.ImageHolder;
-import com.shangpu.dto.ShopExecution;
 import com.shangpu.entity.LocalAuth;
 import com.shangpu.entity.PersonInfo;
-import com.shangpu.entity.Product;
-import com.shangpu.entity.Shop;
-import com.shangpu.enums.ShopStateEnum;
 import com.shangpu.service.LocalAuthService;
 import com.shangpu.service.PersonInfoService;
 import com.shangpu.util.*;
@@ -19,11 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
@@ -49,7 +42,6 @@ public class PersoninfoController {
         modelMap.put("username", username);
         return modelMap;
     }
-
     @RequestMapping(value = "/modifypersoninfo", method = RequestMethod.POST)
     @ResponseBody
     private Map<String, Object> modifyPersonInfo(HttpServletRequest request) {
