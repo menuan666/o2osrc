@@ -10,7 +10,7 @@
     <update id="updateorder">
         update tb_orders
         <set>
-            <if test="price != null">price=#{price},</if>
+
             <if test="status != null">status=#{status},</if>
             <if test="productName != null">product_name=#{productName}</if>
         </set>

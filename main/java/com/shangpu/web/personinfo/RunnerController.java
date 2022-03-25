@@ -97,15 +97,23 @@ public class RunnerController {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         Long runnerId = HttpServletRequestUtil.getLong(request, "runnerId");
-        Runner runner = new Runner();
-        runner.setRunnerId(runnerId);
-        runner.setStatus(1);
-        runner.setGetUserId(pe.getUserId());
-        int count = runnerService.updaterunnerstatus(runner);
-        if (count == 1){
-            modelMap.put("success", true);
-        }else{
+        Runner oldrun =new Runner();
+        List<Runner> runnerlist = runnerService.selectrunner(null,null,runnerId);
+        oldrun = runnerlist.get(0);
+        if (oldrun.getStatus()==0){
+            Runner runner = new Runner();
+            runner.setRunnerId(runnerId);
+            runner.setStatus(1);
+            runner.setGetUserId(pe.getUserId());
+            int count = runnerService.updaterunnerstatus(runner);
+            if (count == 1){
+                modelMap.put("success", true);
+            }else{
+                modelMap.put("success", false);
+            }
+        }else {
             modelMap.put("success", false);
+            modelMap.put("errMsg", "该订单已被别人接受，正在为你刷新");
         }
         return modelMap;
     }

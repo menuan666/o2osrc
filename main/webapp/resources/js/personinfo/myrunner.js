@@ -18,7 +18,6 @@ $(function() {
                 console.log(userId);
                 data.runnerlist.map(function (item, index) {
                     if (userId === item.userId){
-                        console.log(item.userId)
                         weitempAreaHtml += '<div class="weui-form-preview" style="margin-top: 30px">\n' +
                             '                        <div role="option" class="weui-form-preview__hd">\n' +
                             '                            <div class="weui-form-preview__item">\n' +
@@ -41,7 +40,7 @@ $(function() {
                             '                            </div>\n' +
                             '                            <div id="p3" class="weui-form-preview__item">\n' +
                             '                                <label class="weui-form-preview__label">发布时间</label>\n' +
-                            '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
+                            '                                <span class="weui-form-preview__value">'+new Date(gaitime(item.createTime)).Format("yyyy-MM-dd hh:mm")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
                             '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-getuserid=' +item.getUserId+ ' data-id='+item.runnerId+'>'+getStatus(item.status)+'</a>\n' +
@@ -71,7 +70,7 @@ $(function() {
                             '                            </div>\n' +
                             '                            <div id="p3" class="weui-form-preview__item">\n' +
                             '                                <label class="weui-form-preview__label">发布时间</label>\n' +
-                            '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
+                            '                                <span class="weui-form-preview__value">'+new Date(gaitime(item.createTime)).Format("yyyy-MM-dd hh:mm")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
                             '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary"  data-id='+item.runnerId+'>'+getStatus1(item.status)+'</a>\n' +
@@ -139,5 +138,11 @@ $(function() {
         }else if (status == 2){
             return '我已完成';
         }
+    }
+    function gaitime(createtime) {
+        var shu = 8 * 60 * 60 * 1000
+        var shu1 = parseInt(createtime)
+        var shu2 = shu1 - shu
+        return shu2;
     }
 });

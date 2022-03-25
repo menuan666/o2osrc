@@ -80,7 +80,7 @@ $(function() {
                             '                            </div>\n' +
                             '                            <div id="p3" class="weui-form-preview__item">\n' +
                             '                                <label class="weui-form-preview__label">发布时间</label>\n' +
-                            '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
+                            '                                <span class="weui-form-preview__value">'+new Date(gaitime(item.createTime)).Format("yyyy-MM-dd hh:mm")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
                             '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-userid='+item.userId+' data-id='+item.runnerId+'>我要接单</a>\n' +
@@ -122,10 +122,21 @@ $(function() {
                     setTimeout("toast1()",1500);
                     getRunnerList();
                 } else {
-                    console.log("Error");
+                    $("#infotoast").text(data.errMsg);
+                    $('#toast').css("display", "");
+                    $('#toast').css("opacity", "1");
+                    setTimeout("toast1()",1500);
+                    getRunnerList();
                 }
             }
         });
+
     });
+    function gaitime(createtime) {
+        var shu = 8 * 60 * 60 * 1000
+        var shu1 = parseInt(createtime)
+        var shu2 = shu1 - shu
+        return shu2;
+    }
 
 });

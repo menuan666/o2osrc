@@ -25,6 +25,8 @@ Date.prototype.Format = function(fmt) {
         "S" : this.getMilliseconds()
         // 毫秒
     };
+
+    console.log(typeof fmt);
     if (/(y+)/.test(fmt))
         fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "")
             .substr(4 - RegExp.$1.length));

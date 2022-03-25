@@ -53,7 +53,7 @@ public class PersoninfoController {
             modelMap.put("errMsg", "输入了错误的验证码");
             return modelMap;
         }
-        //1.接收并转化相应的参数，包括店铺信息以及图片信息
+        //1.接收并转化相应的参数，包括geren信息以及图片信息
         String personStr = HttpServletRequestUtil.getString(request, "personStr");
         System.out.println("qianduanshuju" + personStr);
         ObjectMapper mapper = new ObjectMapper();
@@ -78,6 +78,7 @@ public class PersoninfoController {
             ImageHolder imageHolder = null;
             if (profileImg != null) {
                 try {
+                    ImageUtil.deleteFileOrPath(per.getProfileImg());
                     imageHolder = new ImageHolder(profileImg.getOriginalFilename(), profileImg.getInputStream());
                 } catch (IOException e) {
                     e.printStackTrace();
