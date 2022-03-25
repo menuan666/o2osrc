@@ -1,7 +1,11 @@
+function toast1(){
+    $('#toast').css("opacity", "0");
+    $('#toast').css("display", "none");
+}
 $(function() {
 
     var runnerlistUrl = '/personinfo/queryrunnerlist';
-    var updateUrl = '/personinfo/modifystatus';
+    var updateUrl = '/personinfo/surerunner';
     getRunnerList()
     var userId;
     function getRunnerList() {
@@ -40,7 +44,7 @@ $(function() {
                             '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
-                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id='+item.runnerId+'>'+getStatus(item.status)+'</a>\n' +
+                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-getuserid=' +item.getUserId+ ' data-id='+item.runnerId+'>'+getStatus(item.status)+'</a>\n' +
                             '                        </div>\n' +
                             '                    </div>';
                     }
@@ -70,7 +74,7 @@ $(function() {
                             '                                <span class="weui-form-preview__value">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</span>\n' +
                             '                            </div></div>\n' +
                             '                        <div class="weui-form-preview__ft">\n' +
-                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id='+item.runnerId+'>'+getStatus1(item.status)+'</a>\n' +
+                            '                            <a role="button" class="weui-form-preview__btn weui-form-preview__btn_primary"  data-id='+item.runnerId+'>'+getStatus1(item.status)+'</a>\n' +
                             '                        </div>\n' +
                             '                    </div>';
                     }
@@ -82,28 +86,41 @@ $(function() {
             }
         });
     }
-    $('#runnerdiv').on('click', 'a', function (e) {
+    $('#wei').on('click', 'a', function (e) {
         //var target = $(e.currentTarget);
         var id =  e.currentTarget.dataset.id;
-        console.log(id);
-        $.ajax({
-            url : updateUrl,
-            async : false,
-            cache : false,
-            type : "post",
-            dataType : 'json',
-            data : {
-                runnerId : id
-            },
-            success : function(data) {
-                if (data.success) {
-                    console.log(11);
-                    getRunnerList();
-                } else {
-                    console.log(22);
+        var guid = $(e.currentTarget).data("getuserid");
+        var uid = $(e.currentTarget).data("userid");
+        console.log(guid);
+        var text = e.currentTarget.innerHTML;
+        if (text =="已接单，点我确认完成"){
+            $.ajax({
+                url : updateUrl,
+                async : false,
+                cache : false,
+                type : "post",
+                dataType : 'json',
+                data : {
+                    runnerId : id,
+                    guid : guid
+                },
+                success : function(data) {
+                    if (data.success) {
+                        $("#infotoast").text("确认完成");
+                        $('#toast').css("display", "");
+                        $('#toast').css("opacity", "1");
+                        setTimeout("toast1()",1500);
+                        getRunnerList();
+                    } else {
+                        $("#infotoast").text(data.errMsg);
+                        $('#toast').css("display", "");
+                        $('#toast').css("opacity", "1");
+                        setTimeout("toast1()",1500);
+                    }
                 }
-            }
-        });
+            });
+        }
+
     });
     function getStatus(status) {
         if (status == 0) {

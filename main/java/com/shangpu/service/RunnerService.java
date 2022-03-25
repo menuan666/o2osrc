@@ -13,7 +13,8 @@ public interface RunnerService {
      * @param getUserId
      * @return
      */
-    List<Runner> selectrunner(@Param("userId") Long userId, @Param("getUserId") Long getUserId);
+    List<Runner> selectrunner(@Param("userId") Long userId, @Param("getUserId") Long getUserId
+    ,@Param("runnerId") Long runnerId);
 
     /**
      * 插入跑腿订单

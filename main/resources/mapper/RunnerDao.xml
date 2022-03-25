@@ -23,8 +23,12 @@
             <if test="userId != null">
                 and user_id = #{userId}
             </if>
+
             <if test="getUserId != null">
                 and get_user_id = #{getUserId}
+            </if>
+            <if test="runnerId != null">
+                and runner_id = #{runnerId}
             </if>
         </where>
     </select>

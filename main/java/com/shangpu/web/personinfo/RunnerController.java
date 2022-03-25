@@ -81,7 +81,7 @@ public class RunnerController {
     private Map<String, Object> queryRunnerList(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
-        List<Runner> runnerList = runnerService.selectrunner(null, null);
+        List<Runner> runnerList = runnerService.selectrunner(null, null,null);
         if (runnerList != null){
             modelMap.put("runnerlist", runnerList);
             modelMap.put("userId",pe.getUserId());
@@ -106,6 +106,42 @@ public class RunnerController {
             modelMap.put("success", true);
         }else{
             modelMap.put("success", false);
+        }
+        return modelMap;
+    }
+    @RequestMapping(value = "/surerunner")
+    @ResponseBody
+    private Map<String, Object> sureRunner(HttpServletRequest request) {
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        //PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
+        Long runnerId = HttpServletRequestUtil.getLong(request, "runnerId");
+        Long guid = HttpServletRequestUtil.getLong(request, "guid");
+        Runner runner = new Runner();
+        runner.setRunnerId(runnerId);
+        runner.setStatus(2);
+        Runner oldrun =new Runner();
+        List<Runner> runnerlist = runnerService.selectrunner(null,null,runnerId);
+        oldrun = runnerlist.get(0);
+        double price = oldrun.getPrice();
+        PersonInfo per = personInfoService.selectpersoninfo(guid);
+        if (per!=null){
+            per.setBalance(price+per.getBalance());
+            int count = personInfoService.updatePersonInfo(per);
+            if (count == 1){
+                int count1 = runnerService.updaterunnerstatus(runner);
+                if (count1 == 1){
+                    modelMap.put("success", true);
+                }else{
+                    modelMap.put("success", false);
+                    modelMap.put("errMsg", "修改状态失败");
+                }
+            }else{
+                modelMap.put("success", false);
+                modelMap.put("errMsg", "更新个人信息失败");
+            }
+        }else{
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "查询个人信息失败");
         }
         return modelMap;
     }

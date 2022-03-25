@@ -19,8 +19,8 @@ public class RunnerServiceImpl implements RunnerService {
      * @return
      */
     @Override
-    public List<Runner> selectrunner(Long userId, Long getUserId) {
-        return runnerDao.selectrunner(userId,getUserId);
+    public List<Runner> selectrunner(Long userId, Long getUserId,Long runner) {
+        return runnerDao.selectrunner(userId,getUserId,runner);
     }
 
     /**
