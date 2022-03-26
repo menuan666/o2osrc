@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shangpu.dao.RunnerDao">
     <insert id="insertRunner">
-        INSERT INTO tb_runner(runner_name, phone,runner_desc,
-                              create_time, price, user_id)
-        VALUES (#{runnerName},#{phone},#{runnerDesc},NOW(),#{price},#{userId})
+        INSERT INTO tb_runner(runner_name,runner_desc,
+                              create_time, price, user_id, phone)
+        VALUES (#{runnerName},#{runnerDesc},NOW(),#{price},#{userId},#{phone})
     </insert>
     <update id="updaterunnerstatus">
         update tb_runner
@@ -31,6 +31,7 @@
                 and runner_id = #{runnerId}
             </if>
         </where>
+ORDER BY runner_id DESC
     </select>
 
 </mapper>

@@ -17,7 +17,7 @@
             <result column="gender" property="gender" />
             <result column="balance" property="balance" />
             <result column="email" property="email" />
-            <result column="user_type" property="userType" />
+<!--            <result column="user_type" property="userType" />-->
             <result column="create_time" property="createTime" />
             <result column="last_edit_time" property="lastEditTime" />
             <result column="enable_status" property="enableStatus" />
@@ -48,7 +48,7 @@
             p.email,
             p.profile_img,
             p.balance,
-            p.user_type,
+#             p.user_type,
             p.create_time,
             p.last_edit_time,
             p.enable_status

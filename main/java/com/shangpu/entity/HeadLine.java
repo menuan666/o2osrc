@@ -20,7 +20,7 @@ public class HeadLine {
     private String lineImg;
     //权重
     private Integer priority;
-    //0.不可用1.可用
+    //0.可用1.不可用
     private Integer enableStatus;
     //创建时间
     private Date createTime;

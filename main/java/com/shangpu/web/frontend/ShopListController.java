@@ -122,7 +122,7 @@ public class ShopListController {
             shopCondition.setShopName(shopName);
         }
         // 查询状态为审核通过的商铺
-        shopCondition.setEnableStatus(1);
+        shopCondition.setEnableStatus(0);
         return shopCondition;
     }
 

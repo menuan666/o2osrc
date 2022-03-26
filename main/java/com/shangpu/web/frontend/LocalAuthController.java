@@ -46,7 +46,9 @@ public class LocalAuthController {
         if (userName != null && password != null) {
             // 数据库中的密码是MD加密的，所以需要先将密码加密，然后再调用后台的接口
             password = MD5.getMd5(password);
+            System.out.println(11);
             LocalAuth localAuth = localAuthService.queryLocalAuthByUserNameAndPwd(userName, password);
+            System.out.println(12);
             if (localAuth != null) {
                 // 将personInfo写入session中
                 request.getSession().setAttribute("user", localAuth.getPersonInfo());

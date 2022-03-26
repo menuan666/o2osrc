@@ -25,8 +25,6 @@ public class PersonInfo {
     private double balance;
     //用户状态
     private Integer enableStatus;
-    //1.顾客 2.店家 3.超级管理员
-    private String userType;
     //创建时间
     private Date createTime;
     // 最后更改时间
