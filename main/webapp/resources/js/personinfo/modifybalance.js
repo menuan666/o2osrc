@@ -18,6 +18,13 @@ $(function () {
     }
     $('#sumbit').click(function() {
         var addbal = $('#addbal').val();
+        if (addbal>1000){
+            $("#infotoast").text("金额不能大于1000");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            return;
+        }
         if(isEmpty(addbal)){
             $("#infotoast").text("金额不能为空");
             $('#toast').css("display", "");

@@ -49,7 +49,7 @@ $(function() {
                     }, 500);
                 } else {
                     console.log(data.errMsg);
-                    $("#infotoast").text("登陆失败");
+                    $("#infotoast").text(data.errMsg);
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("toast1()",1500);
