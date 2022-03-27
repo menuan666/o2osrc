@@ -99,7 +99,7 @@ $(function () {
     //且控件总数未达到6个，则生成新的一个文件上传控件
     $('.detail-img-div').on('change', '.detail-img:last-child', function () {
         if ($('.detail-img').length < 6) {
-            $('#detail-img').append('<input type="file" class="detail-img">');
+            $('#detail-img').append('<input type="file" class="detail-img" accept="image/png,image/jpeg,image/jpg">');
         }
     });
 
