@@ -44,9 +44,8 @@ $(function() {
             success : function(data) {
                 if (data.success) {
                     console.log(data.errMsg);
-                    setTimeout(function (){
-                        window.location.href = '/frontend/index';
-                    }, 500);
+                    window.location.href = '/frontend/index';
+
                 } else {
                     console.log(data.errMsg);
                     $("#infotoast").text(data.errMsg);
