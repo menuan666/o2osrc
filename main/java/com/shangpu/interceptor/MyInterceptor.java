@@ -27,8 +27,9 @@ public class MyInterceptor implements HandlerInterceptor {
 
         // 用户没有登陆跳转到登陆页面
         System.out.println(2);
-        httpServletRequest.getRequestDispatcher("/frontend/login").
-                forward(httpServletRequest, httpServletResponse);
+//        httpServletRequest.getRequestDispatcher("/frontend/login").
+//                forward(httpServletRequest, httpServletResponse);
+        httpServletResponse.sendRedirect("/frontend/login");
         return false;
     }
 //        System.out.println("登陆判断");
