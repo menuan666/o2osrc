@@ -7,6 +7,7 @@ $(function () {
 
     var pageNum = 1;
     var shopId = getQueryString('shopId');
+    var parentId = getQueryString('parentId');
     var productCategoryId = '';
     var productName = '';
 
@@ -15,7 +16,9 @@ $(function () {
 
     getSearchDivData();
     addItems(pageSize, pageNum);
-
+    $("#return").click(function(){
+        window.location.href = '/frontend/shoplist?parentId=' + parentId;
+    });
     function getSearchDivData() {
         var url = searchDivUrl;
         $.getJSON(url,

@@ -82,7 +82,7 @@ $(function () {
     $('.items').on('click', '.item', function (e) {
         var shopId = e.currentTarget.dataset.shopId;
         console.log(shopId);
-        window.location.href = '/frontend/shopdetail?shopId=' + shopId;
+        window.location.href = '/frontend/shopdetail?parentId='+parentId+'&shopId=' + shopId;
     });
 
     $('#shoplist-search-div').on(
