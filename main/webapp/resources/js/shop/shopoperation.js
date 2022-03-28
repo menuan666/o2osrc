@@ -97,6 +97,15 @@ $(function () {
             }).data('id')
         };
 
+        var regu = /^[1][0-9][0-9]{9}$/;
+        var re = new RegExp(regu);
+        if (!re.test(shop.phone)) {
+            $("#infotoast").text("请检查联系方式是否正确");
+            $('#fildtoast').css("display", "");
+            $('#fildtoast').css("opacity", "1");
+            setTimeout("toast1()", 1500);
+            return;
+        }
         var shopImg = $('#shop-img')[0].files[0];
         // console.log(isEmpty(shopImg))
         // if (isEdit){
