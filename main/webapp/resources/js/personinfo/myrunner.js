@@ -3,7 +3,6 @@ function toast1(){
     $('#toast').css("display", "none");
 }
 $(function() {
-
     var runnerlistUrl = '/personinfo/queryrunnerlist';
     var updateUrl = '/personinfo/surerunner';
     getRunnerList()
