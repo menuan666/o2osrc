@@ -136,14 +136,17 @@ $(function () {
             success: function (data) {
                 if (data.success) {
                     if (isEdit){
-                        $("#successtoast").text("修改成功");
+                        $("#successtoast").text("修改成功，正在跳转管理页");
+
                     }else{
-                        $("#successtoast").text("注册成功");
+                        $("#successtoast").text("注册成功，正在跳转管理页");
                     }
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("location1()",2000);
-
+                    setTimeout(function (){
+                        window.location.href = '/shopadmin/shoplist';
+                    }, 2000);
                 } else {
                     if (isEdit){
                         $("#infotoast").text("修改失败");
