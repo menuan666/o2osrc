@@ -24,6 +24,15 @@ $(function () {
         var person = {};
         person.name = $('#name').val();
         person.email = $('#email').val();
+        if(!isEmpty(person.email)){
+            if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(person.email)){
+                $("#infotoast").text("邮箱格式不正确");
+                $('#toast').css("display", "");
+                $('#toast').css("opacity", "1");
+                setTimeout("toast1()",1500);
+                return;
+            }
+        }
         person.gender = $("#gender").find("option:selected").text();
         var profileImg = $('#userimg')[0].files[0];
         console.log(profileImg+gender);
