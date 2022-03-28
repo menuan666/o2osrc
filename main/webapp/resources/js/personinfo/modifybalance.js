@@ -18,6 +18,7 @@ $(function () {
     }
     $('#sumbit').click(function() {
         var addbal = $('#addbal').val();
+        console.log(addbal)
         if (addbal>1000){
             $("#infotoast").text("金额不能大于1000");
             $('#toast').css("display", "");
