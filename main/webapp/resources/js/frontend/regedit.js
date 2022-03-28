@@ -11,6 +11,19 @@ $(function() {
         var password = $('#psw').val();
         var name = $('#name').val();
         var newpas = $('#newpsw').val();
+        var reg = new RegExp("^[A-Za-z0-9]{5,10}$");
+        //获取输入框中的值
+        //判断输入框中有内容
+        if(!reg.test(userName))
+        {
+            $("#infotoast").text("请注意登录名只能为数字或者字母且为5到10位");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",2000);
+            $("#username").val("");
+            return;
+        }
+
         if(isEmpty(password)||isEmpty(userName)||isEmpty(name)||isEmpty(newpas)){
             $("#infotoast").text("请将信息填写完整");
             $('#toast').css("display", "");
@@ -85,6 +98,7 @@ $(function() {
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("toast1()",1500);
+                    $("#username").val("");
                 }
             }
         });
