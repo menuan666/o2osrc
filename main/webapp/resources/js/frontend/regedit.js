@@ -12,8 +12,6 @@ $(function() {
         var name = $('#name').val();
         var newpas = $('#newpsw').val();
         var reg = new RegExp("^[A-Za-z0-9]{5,10}$");
-        //获取输入框中的值
-        //判断输入框中有内容
         if(!reg.test(userName))
         {
             $("#infotoast").text("请注意登录名只能为数字或者字母且为5到10位");
@@ -76,7 +74,26 @@ $(function() {
             }
         });
     });
-
+    $("#psw").change(function(){
+        if ($("#psw").val().length<6){
+            $("#infotoast").text("密码长度应为6-16位字符");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            $("#psw").val("");
+        }
+    });
+    $("#newpsw").change(function(){
+        var password = $('#psw').val();
+        var newpas = $('#newpsw').val();
+        if (password!=newpas){
+            $("#infotoast").text("两次输入的密码不一样");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            $("#newpsw").val("");
+        }
+    });
     $("#username").change(function(){
         var userName = $("#username").val();
         console.log(1111)
