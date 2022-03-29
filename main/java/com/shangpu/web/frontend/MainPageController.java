@@ -44,8 +44,9 @@ public class MainPageController {
         try{
             //获取状态可用（1）的头条列表
             HeadLine headLineCondition = new HeadLine();
-            headLineCondition.setEnableStatus(1);
+            headLineCondition.setEnableStatus(0);
             headLineList = headLineService.getHeadLineList(headLineCondition);
+
             modelMap.put("headLineList", headLineList);
         }catch(Exception e){
             modelMap.put("success", false);

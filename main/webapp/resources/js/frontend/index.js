@@ -11,6 +11,7 @@ $(function() {
     getRunnerList()
     //访问后台，获取头条列表以及一级类别列表
     $.getJSON(url, function (data) {
+        console.log(data)
         if (data.success) {
             //获取后台传递过来的头条列表
 
@@ -20,6 +21,7 @@ $(function() {
                 '                        </div>';
             //遍历头条列表，并拼接出轮播图组
             headLineList.map(function (item, index) {
+                console.log(index)
                 swiperHtml += '<div class="item " >\n' +
                     '<a href="'+item.lineLink+'"external >' +
                     '<img src="'+item.lineImg+'" alt="'+ item.lineName +'"></a></div>';
@@ -38,7 +40,6 @@ $(function() {
                     '<p class="weui-grid__label">'+item.shopCategoryName+'</p>'+
                     '</div>'
             });
-
             //将拼接好的类别赋值给前端HTML控件进行展示
             $('.row').html(categoryHtml);
         }
