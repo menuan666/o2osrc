@@ -61,6 +61,7 @@ $(function () {
                 $('#promotion-price').val(
                     product.promotionPrice);
                 //获取原本的商品类别以及该店铺的所有商品类别列表
+
                 var optionHtml = '';
                 var optionArr = data.productCategoryList;
                 var optionSelected = product.productCategory.productCategoryId;
@@ -121,6 +122,21 @@ $(function () {
                         return !this.selected;
                     }).data('value')
             };
+            var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+            if (!reg.test(product.normalPrice)) {
+                $("#infotoast").text("商品的价格不正确");
+                $('#toast').css("display", "");
+                $('#toast').css("opacity", "1");
+                setTimeout("toast1()",1500);
+                return;
+            }
+            if (!reg.test(product.promotionPrice)) {
+                $("#infotoast").text("商品的价格不正确");
+                $('#toast').css("display", "");
+                $('#toast').css("opacity", "1");
+                setTimeout("toast1()",1500);
+                return;
+            }
             product.productId = productId;
             //获取缩略图文件流
             var thumbnail = $('#small-img')[0].files[0];
@@ -142,7 +158,7 @@ $(function () {
             //获取表单里输入的验证码
 
             if (!isEdit){
-                if (isEmpty(product.productName)||isEmpty(product.productDesc)||isEmpty(product.priority)||
+                if (isEmpty(product.normalPrice)||isEmpty(product.promotionPrice)||isEmpty(product.productName)||isEmpty(product.productDesc)||isEmpty(product.priority)||
                     isEmpty(thumbnail)||isEmpty($('.detail-img')[0].files[0])){
                     $("#infotoast").text("请检查信息是否完整");
                     $('#toast').css("display", "");

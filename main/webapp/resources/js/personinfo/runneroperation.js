@@ -20,6 +20,14 @@ $(function () {
             setTimeout("toast1()", 2000);
             return;
         }
+        var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+        if (!reg.test(runner.price)) {
+            $("#infotoast").text("跑腿的报酬不正确");
+            $('#toast').css("display", "");
+            $('#toast').css("opacity", "1");
+            setTimeout("toast1()",1500);
+            return;
+        }
         var regu = /^[1][0-9][0-9]{9}$/;
         var re = new RegExp(regu);
         if (!re.test(runner.phone)) {

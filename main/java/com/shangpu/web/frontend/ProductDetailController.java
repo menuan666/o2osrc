@@ -67,7 +67,7 @@ public class ProductDetailController {
     @ResponseBody
     private Map<String, Object> checkBalance(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        int price = HttpServletRequestUtil.getInt(request, "price");
+        double price = HttpServletRequestUtil.getDouble(request, "price");
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         double i = pe.getBalance();
         System.out.println(price+"  "+i);

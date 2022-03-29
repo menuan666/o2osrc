@@ -110,7 +110,7 @@ public class PersoninfoController {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         PersonInfo pe = (PersonInfo) request.getSession().getAttribute("user");
         PersonInfo per = personInfoService.selectpersoninfo(pe.getUserId());
-        int addbal = Integer.parseInt(HttpServletRequestUtil.getString(request, "addbal"));
+        double addbal = HttpServletRequestUtil.getDouble(request, "addbal");
         System.out.println(per.getBalance());
         double newbal = per.getBalance();
         System.out.println("newbal="+newbal);
