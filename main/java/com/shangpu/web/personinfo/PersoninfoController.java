@@ -78,7 +78,9 @@ public class PersoninfoController {
             ImageHolder imageHolder = null;
             if (profileImg != null) {
                 try {
-                    ImageUtil.deleteFileOrPath(per.getProfileImg());
+                    if (!per.getProfileImg().equals("/upload/personinfo/touxiang.png")) {
+                        ImageUtil.deleteFileOrPath(per.getProfileImg());
+                    }
                     imageHolder = new ImageHolder(profileImg.getOriginalFilename(), profileImg.getInputStream());
                 } catch (IOException e) {
                     e.printStackTrace();
