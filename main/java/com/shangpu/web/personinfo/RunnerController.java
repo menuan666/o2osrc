@@ -51,7 +51,7 @@ public class RunnerController {
         double price= runner.getPrice();
         System.out.println(balance+"--"+price);
         double res = balance-price;
-        if (res>0){
+        if (res>=0){
             System.out.println("大于零");
             pe.setBalance(res);
             System.out.println("大于零1");

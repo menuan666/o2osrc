@@ -124,7 +124,7 @@ $(function() {
 
                 } else {
                     console.log(data.errMsg)
-                    $("#infotoast").text("购买失败");
+                    $("#infotoast").text(data.errMsg);
                     $('#toast').css("display", "");
                     $('#toast').css("opacity", "1");
                     setTimeout("toast1()",1500);

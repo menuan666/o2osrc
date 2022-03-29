@@ -23,6 +23,7 @@ import com.shangpu.service.ProductService;
 import com.shangpu.util.HttpServletRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -80,6 +81,7 @@ public class ProductDetailController {
     }
     @RequestMapping(value = "/productorder", method = RequestMethod.POST)
     @ResponseBody
+
     private Map<String, Object> productOrder(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         String orderStr = HttpServletRequestUtil.getString(request, "orderStr");
@@ -97,12 +99,16 @@ public class ProductDetailController {
         }
         double j = shop.getPrice();
         double newbla = i-j;
+        if (newbla<0){
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "余额不足");
+            return modelMap;
+        }
         PersonInfo p = new PersonInfo();
         p.setUserId(pe.getUserId());
         pe.setBalance(newbla);
         p.setBalance(newbla);
         String code = String.valueOf(getAccessCode(pe.getUserId()));
-
         int aa = personInfoService.updatePersonInfo(p);
         request.getSession().setAttribute("user", pe);
         System.out.println(aa);
@@ -130,5 +136,4 @@ public class ProductDetailController {
         Long a = System.currentTimeMillis()+userId;
         return a;
     }
-
 }
